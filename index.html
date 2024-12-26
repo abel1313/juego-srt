@@ -41,10 +41,10 @@
 
         <label for="origenZona">Zona de Origen:</label>
         <select id="origenZona">
-            <option value="1">0</option>
-            <option value="2">1</option>
-            <option value="3">2</option>
-            <option value="4">3</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
         </select>
 
         <label for="destinoMapa">Mapa de Destino:</label>
@@ -52,10 +52,10 @@
 
         <label for="destinoZona">Zona de Destino:</label>
         <select id="destinoZona">
-            <option value="1">0</option>
-            <option value="2">1</option>
-            <option value="3">2</option>
-            <option value="4">3</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
         </select>
 
         <button class="btn btn-success" onclick="buscarRuta()">Buscar Ruta</button>
@@ -186,7 +186,7 @@
                 rutaDiv.innerHTML = `<strong>Ruta ${rutaNum} encontrada: Origen ${origenMapa} zona ${origenZona}</strong>`;
                 ruta.forEach(paso => {
                     const pasoDiv = document.createElement("div");
-                    pasoDiv.innerHTML = `Mapa: ${paso.nombreMapa}, Zona: ${paso.numeroZona-1}, Portal: ${paso.numeroPortal}`;
+                    pasoDiv.innerHTML = `Mapa: ${paso.nombreMapa}, Zona: ${paso.numeroZona}, Portal: ${paso.numeroPortal}`;
                     rutaDiv.appendChild(pasoDiv);
                 });
                 output.appendChild(rutaDiv);

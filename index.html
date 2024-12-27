@@ -41,10 +41,10 @@
 
         <label for="origenZona">Zona de Origen:</label>
         <select id="origenZona">
+            <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
-            <option value="4">4</option>
         </select>
 
         <label for="destinoMapa">Mapa de Destino:</label>
@@ -52,10 +52,10 @@
 
         <label for="destinoZona">Zona de Destino:</label>
         <select id="destinoZona">
+            <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
-            <option value="4">4</option>
         </select>
 
         <button class="btn btn-success" onclick="buscarRuta()">Buscar Ruta</button>
@@ -183,10 +183,10 @@
             let rutaNum = 1;
             rutas.forEach(ruta => {
                 const rutaDiv = document.createElement("div");
-                rutaDiv.innerHTML = `<strong>Ruta ${rutaNum} encontrada: Origen ${origenMapa} zona ${origenZona}</strong>`;
+                rutaDiv.innerHTML = `<strong>Ruta ${rutaNum} encontrada: </br> Origen ${origenMapa} zona ${origenZona}</strong>`;
                 ruta.forEach(paso => {
                     const pasoDiv = document.createElement("div");
-                    pasoDiv.innerHTML = `Mapa: ${paso.nombreMapa}, Zona: ${paso.numeroZona}, Portal: ${paso.numeroPortal}`;
+                    pasoDiv.innerHTML = `Portal: ${paso.numeroPortal}, Mapa: ${paso.nombreMapa}, Zona: ${paso.numeroZona}`;
                     rutaDiv.appendChild(pasoDiv);
                 });
                 output.appendChild(rutaDiv);
@@ -199,339 +199,484 @@
 
 
 
-        todosLosMapas.push({
-  nombreMapa:"alcyone",
-    listZona:[{
-        nombreZona:"zona 1",
-        numeroZona:1,
-        listPortales:[{
-          namePortal:"bootes",
-          numeroPortal:1,
-          descPortal:"izq arriba",
-          irZona:4,
-          aparecerPortal:2},{
-          namePortal:"orion",
-          numeroPortal:2,
-          descPortal:"der arriba",
-          irZona:3,
-          aparecerPortal:4},{
-          namePortal:"maia",
-          numeroPortal:3,
-          descPortal:"izq abajo",
-          irZona:2,
-          aparecerPortal:1},{
-          namePortal:"auriga",
-          numeroPortal:4,
-          descPortal:"der abajo",
-          irZona:3,
-          aparecerPortal:4}]}]});
+  todosLosMapas.push({
+    nombreMapa:"alcyone",
+      listZona:[
+        {
+          nombreZona:"zona 0",
+          numeroZona:0,
+          listPortales:[
+            {
+            namePortal:"bootes",
+            numeroPortal:1,
+            descPortal:"izq arriba",
+            irZona:3,
+            aparecerPortal:2
+            },
+            {
+            namePortal:"orion",
+            numeroPortal:2,
+            descPortal:"der arriba",
+            irZona:2,
+            aparecerPortal:4
+            },
+            {
+            namePortal:"maia",
+            numeroPortal:3,
+            descPortal:"izq abajo",
+            irZona:1,
+            aparecerPortal:1
+            },
+            {
+            namePortal:"auriga",
+            numeroPortal:4,
+            descPortal:"der abajo",
+            irZona:2,
+            aparecerPortal:4
+            }
+          ]},
+
+
+          {
+          nombreZona:"zona 1",
+          numeroZona:1,
+          listPortales:[
+            {
+            namePortal:"Sirius ",
+            numeroPortal:1,
+            descPortal:"izq arriba",
+            irZona:0,
+            aparecerPortal:3
+            },
+            {
+            namePortal:"alcyone",
+            numeroPortal:2,
+            descPortal:"der arriba",
+            irZona:2,
+            aparecerPortal:2
+            },
+            {
+            namePortal:"cygni",
+            numeroPortal:3,
+            descPortal:"izq abajo",
+            irZona:1,
+            aparecerPortal:2
+            },
+            {
+            namePortal:"sirius",
+            numeroPortal:4,
+            descPortal:"der abajo",
+            irZona:1,
+            aparecerPortal:3
+            }
+          ]},
+
+
+          {
+          nombreZona:"zona 2",
+          numeroZona:2,
+          listPortales:[
+            {
+            namePortal:"volantis",
+            numeroPortal:1,
+            descPortal:"izq arriba",
+            irZona:2,
+            aparecerPortal:2
+            },
+            {
+            namePortal:"alcyone",
+            numeroPortal:2,
+            descPortal:"der arriba",
+            irZona:1,
+            aparecerPortal:2
+            },
+            {
+            namePortal:"aquila",
+            numeroPortal:3,
+            descPortal:"izq abajo",
+            irZona:1,
+            aparecerPortal:3
+            },
+            {
+            namePortal:"auriga",
+            numeroPortal:4,
+            descPortal:"der abajo",
+            irZona:3,
+            aparecerPortal:1
+            }
+          ]},
+
+
+
+          {
+          nombreZona:"zona 3",
+          numeroZona:3,
+          listPortales:[
+            {
+            namePortal:"helvetios",
+            numeroPortal:1,
+            descPortal:"izq arriba",
+            irZona:3,
+            aparecerPortal:4
+            },
+            {
+            namePortal:"cygni",
+            numeroPortal:2,
+            descPortal:"der arriba",
+            irZona:0,
+            aparecerPortal:2
+            },
+            {
+            namePortal:"sadatoni",
+            numeroPortal:3,
+            descPortal:"izq abajo",
+            irZona:0,
+            aparecerPortal:3
+            },
+            {
+            namePortal:"auriga",
+            numeroPortal:4,
+            descPortal:"der abajo",
+            irZona:3,
+            aparecerPortal:4
+            }
+          ]}
+
+
+
+
+        ]
+        });
 todosLosMapas.push({
   nombreMapa:"atlas a",
     listZona:[{
-        nombreZona:"zona 1",
-        numeroZona:1,
+        nombreZona:"zona 0",
+        numeroZona:0,
         listPortales:[{
           namePortal:"eridani",
           numeroPortal:1,
           descPortal:"izq arriba 0",
-          irZona:1,
+          irZona:0,
           aparecerPortal:3},{
           namePortal:"sirius",
           numeroPortal:2,
           descPortal:"der arriba 1",
-          irZona:4,
+          irZona:3,
           aparecerPortal:4},{
           namePortal:"bootes",
           numeroPortal:3,
           descPortal:"izq abajo 2",
-          irZona:2,
+          irZona:1,
           aparecerPortal:3},{
           namePortal:"atlas b",
           numeroPortal:4,
           descPortal:"der abajo 3",
-          irZona:1,
+          irZona:0,
           aparecerPortal:3}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
+        nombreZona:"zona 1",
+        numeroZona:1,
         listPortales:[{
           namePortal:"helvetios",
           numeroPortal:1,
           descPortal:"arriba izq 0",
-          irZona:2,
+          irZona:1,
           aparecerPortal:2},{
           namePortal:"helvetios",
           numeroPortal:2,
           descPortal:"arriba der 1",
-          irZona:1,
+          irZona:0,
           aparecerPortal:2},{
           namePortal:"bootes",
           numeroPortal:3,
           descPortal:"abajo izq 2",
-          irZona:4,
+          irZona:3,
           aparecerPortal:4},{
           namePortal:"auriga",
           numeroPortal:4,
           descPortal:"abajo der 3",
-          irZona:2,
+          irZona:1,
           aparecerPortal:1}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
+        nombreZona:"zona 2",
+        numeroZona:2,
         listPortales:[{
           namePortal:"eridani",
           numeroPortal:1,
           descPortal:"arriba izq 0",
-          irZona:1,
+          irZona:0,
           aparecerPortal:4},{
           namePortal:"sirius",
           numeroPortal:2,
           descPortal:"arriba der 1",
-          irZona:3,
+          irZona:2,
           aparecerPortal:4},{
           namePortal:"cygni",
           numeroPortal:3,
           descPortal:"abajo izq 2",
-          irZona:3,
+          irZona:2,
           aparecerPortal:4},{
           namePortal:"bootes",
           numeroPortal:4,
           descPortal:"abajo der 3",
-irZona:1,
+irZona:0,
 aparecerPortal:2}]},{
-        nombreZona:"zona 4",
-        numeroZona:4,
+        nombreZona:"zona 3",
+        numeroZona:3,
         listPortales:[{
           namePortal:"maia",
           numeroPortal:1,
           descPortal:"arriba izq 0",
-          irZona:2,
+          irZona:1,
           aparecerPortal:3},{
           namePortal:"aquila",
           numeroPortal:2,
           descPortal:"arriba der 1",
-          irZona:2,
+          irZona:1,
           aparecerPortal:1},{
           namePortal:"sirius",
           numeroPortal:3,
           descPortal:"abajo izq 2",
-          irZona:2,
+          irZona:1,
           aparecerPortal:1},{
           namePortal:"aquila",
           numeroPortal:4,
           descPortal:"abajo der 3",
-          irZona:3,
+          irZona:2,
           aparecerPortal:2}]}]});
 todosLosMapas.push({
   nombreMapa:"atlas b",
     listZona:[{
-        nombreZona:"zona 1",
-        numeroZona:1,
+        nombreZona:"zona 0",
+        numeroZona:0,
         listPortales:[{
           namePortal:"maia",
           numeroPortal:1,
           descPortal:"izq arriba 0",
-          irZona:1,
+          irZona:0,
           aparecerPortal:2},{
           namePortal:"maia",
           numeroPortal:2,
           descPortal:"der arriba 1",
-          irZona:1,
+          irZona:0,
           aparecerPortal:3},{
           namePortal:"atlas a",
           numeroPortal:3,
           descPortal:"izq abajo 2",
-          irZona:1,
+          irZona:0,
           aparecerPortal:4},{
           namePortal:"sirius",
           numeroPortal:4,
           descPortal:"der abajo 3",
-          irZona:1,
+          irZona:0,
           aparecerPortal:3}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
+        nombreZona:"zona 1",
+        numeroZona:1,
         listPortales:[{
           namePortal:"persei",
           numeroPortal:1,
           descPortal:"arriba izq 0",
-          irZona:4,
+          irZona:3,
           aparecerPortal:4},{
           namePortal:"orion",
           numeroPortal:2,
           descPortal:"arriba der 1",
-          irZona:1,
+          irZona:0,
           aparecerPortal:2},{
           namePortal:"orion",
           numeroPortal:3,
           descPortal:"abajo izq 2",
-          irZona:3,
+          irZona:2,
           aparecerPortal:1},{
           namePortal:"aquila",
           numeroPortal:4,
           descPortal:"abajo der 3",
-          irZona:2,
+          irZona:1,
           aparecerPortal:4}]},{
+        nombreZona:"zona 2",
+        numeroZona:2,
+        listPortales:[{
+          namePortal:"helvetios",
+          numeroPortal:1,
+          descPortal:"arriba izq 0",
+          irZona:0,
+          aparecerPortal:4},{
+          namePortal:"orion",
+          numeroPortal:2,
+          descPortal:"arriba der 1",
+          irZona:0,
+          aparecerPortal:1},{
+          namePortal:"cygni",
+          numeroPortal:3,
+          descPortal:"abajo izq 2",
+          irZona:2,
+          aparecerPortal:2},{
+          namePortal:"atlas c",
+          numeroPortal:4,
+          descPortal:"abajo der 3",
+          irZona:0,
+          aparecerPortal:3}]},{
         nombreZona:"zona 3",
         numeroZona:3,
         listPortales:[{
           namePortal:"helvetios",
           numeroPortal:1,
           descPortal:"arriba izq 0",
-          irZona:1,
-          aparecerPortal:4},{
-          namePortal:"orion",
-          numeroPortal:2,
-          descPortal:"arriba der 1",
-          irZona:1,
-          aparecerPortal:1},{
-          namePortal:"cygni",
-          numeroPortal:3,
-          descPortal:"abajo izq 2",
           irZona:3,
-          aparecerPortal:2},{
-          namePortal:"atlas c",
-          numeroPortal:4,
-          descPortal:"abajo der 3",
-          irZona:1,
-          aparecerPortal:3}]},{
-        nombreZona:"zona 4",
-        numeroZona:4,
-        listPortales:[{
-          namePortal:"helvetios",
-          numeroPortal:1,
-          descPortal:"arriba izq 0",
-          irZona:4,
           aparecerPortal:2},{
           namePortal:"maia",
           numeroPortal:2,
           descPortal:"arriba der 1",
-          irZona:3,
+          irZona:2,
           aparecerPortal:1},{
           namePortal:"sadatoni",
           numeroPortal:3,
           descPortal:"abajo izq 2",
-          irZona:3,
+          irZona:2,
           aparecerPortal:3},{
           namePortal:"eridani",
           numeroPortal:4,
           descPortal:"abajo der 3",
-          irZona:4,
+          irZona:3,
           aparecerPortal:4}]}]});
 todosLosMapas.push({
   nombreMapa:"atlas c",
     listZona:[{
-        nombreZona:"zona 1",
-        numeroZona:1,
+        nombreZona:"zona 0",
+        numeroZona:0,
         listPortales:[{
           namePortal:"orion",
           numeroPortal:1,
           descPortal:"arriba izq 0",
-          irZona:4,
+          irZona:3,
           aparecerPortal:3},{
           namePortal:"orion",
           numeroPortal:2,
           descPortal:"arriba der 1",
-          irZona:4,
+          irZona:3,
           aparecerPortal:4},{
           namePortal:"atlas b",
           numeroPortal:3,
           descPortal:"abajo izq 2",
-          irZona:3,
+          irZona:2,
           aparecerPortal:4},{
           namePortal:"persei",
           numeroPortal:4,
           descPortal:"abajo der 3",
-          irZona:4,
+          irZona:3,
           aparecerPortal:1}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
+        nombreZona:"zona 1",
+        numeroZona:1,
         listPortales:[{
           namePortal:"eridani",
           numeroPortal:1,
           descPortal:"arriba izq 0",
-          irZona:2,
+          irZona:1,
           aparecerPortal:3},{
           namePortal:"sadatoni",
           numeroPortal:2,
           descPortal:"arriba der 1",
-          irZona:2,
+          irZona:1,
           aparecerPortal:1},{
           namePortal:"maia",
           numeroPortal:3,
           descPortal:"abajo izq 2",
-          irZona:2,
+          irZona:1,
           aparecerPortal:4},{
           namePortal:"orion",
           numeroPortal:4,
           descPortal:"abajo der 3",
-          irZona:1,
+          irZona:0,
           aparecerPortal:3}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
+        nombreZona:"zona 2",
+        numeroZona:2,
         listPortales:[{
           namePortal:"sadatoni",
           numeroPortal:1,
           descPortal:"arriba izq 0",
-          irZona:4,
+          irZona:3,
           aparecerPortal:3},{
           namePortal:"volantis",
           numeroPortal:2,
           descPortal:"arriba der 1",
-          irZona:1,
+          irZona:0,
           aparecerPortal:3},{
           namePortal:"persei",
           numeroPortal:3,
           descPortal:"abajo izq 2",
-          irZona:3,
+          irZona:2,
           aparecerPortal:2},{
           namePortal:"aquila",
           numeroPortal:4,
           descPortal:"abajo der 3",
-          irZona:3,
+          irZona:2,
           aparecerPortal:3}]},{
-        nombreZona:"zona 4",
-        numeroZona:4,
+        nombreZona:"zona 3",
+        numeroZona:3,
         listPortales:[{
           namePortal:"bootes",
           numeroPortal:1,
           descPortal:"arriba izq 0",
-          irZona:1,
+          irZona:0,
           aparecerPortal:4},{
           namePortal:"sadatoni",
           numeroPortal:2,
           descPortal:"arriba der 1",
-          irZona:1,
+          irZona:0,
           aparecerPortal:2},{
           namePortal:"auriga",
           numeroPortal:3,
           descPortal:"abajo izq 2",
-          irZona:4,
+          irZona:3,
           aparecerPortal:2},{
           namePortal:"orion",
           numeroPortal:4,
           descPortal:"abajo der 3",
-          irZona:2,
+          irZona:1,
           aparecerPortal:4}]}]});
 todosLosMapas.push({
   nombreMapa:"aquila",
     listZona:[{
-        nombreZona:"zona 1",
-        numeroZona:1,
+        nombreZona:"zona 0",
+        numeroZona:0,
         listPortales:[{
           namePortal:"aquila",
           numeroPortal:1,
           descPortal:"arriba izq 0",
-          irZona:4,
+          irZona:3,
           aparecerPortal:2},{
           namePortal:"maia",
           numeroPortal:2,
           descPortal:"arriba der 1",
-          irZona:4,
+          irZona:3,
           aparecerPortal:3},{
           namePortal:"bootes",
           numeroPortal:3,
           descPortal:"abajo izq 2",
-          irZona:3,
+          irZona:2,
           aparecerPortal:3},{
           namePortal:"sirius",
+          numeroPortal:4,
+          descPortal:"abajo der 3",
+          irZona:1,
+          aparecerPortal:2}]},{
+        nombreZona:"zona 1",
+        numeroZona:1,
+        listPortales:[{
+          namePortal:"atlas a",
+          numeroPortal:1,
+          descPortal:"arriba izq 0",
+          irZona:1,
+          aparecerPortal:4},{
+          namePortal:"sirius",
+          numeroPortal:2,
+          descPortal:"arriba der 1",
+          irZona:3,
+          aparecerPortal:1},{
+          namePortal:"sadatoni",
+          numeroPortal:3,
+          descPortal:"abajo izq 2",
+          irZona:1,
+          aparecerPortal:4},{
+          namePortal:"eridani",
           numeroPortal:4,
           descPortal:"abajo der 3",
           irZona:2,
@@ -539,1096 +684,1103 @@ todosLosMapas.push({
         nombreZona:"zona 2",
         numeroZona:2,
         listPortales:[{
-          namePortal:"atlas a",
-          numeroPortal:1,
-          descPortal:"arriba izq 0",
-          irZona:2,
-          aparecerPortal:4},{
-          namePortal:"sirius",
-          numeroPortal:2,
-          descPortal:"arriba der 1",
-          irZona:4,
-          aparecerPortal:1},{
-          namePortal:"sadatoni",
-          numeroPortal:3,
-          descPortal:"abajo izq 2",
-          irZona:2,
-          aparecerPortal:4},{
-          namePortal:"eridani",
-          numeroPortal:4,
-          descPortal:"abajo der 3",
-          irZona:3,
-          aparecerPortal:2}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
-        listPortales:[{
           namePortal:"cygni",
           numeroPortal:1,
           descPortal:"arriba izq 0",
-          irZona:3,
+          irZona:2,
           aparecerPortal:3},{
           namePortal:"atlas a",
           numeroPortal:2,
           descPortal:"arriba der 1",
-          irZona:4,
+          irZona:3,
           aparecerPortal:4},{
           namePortal:"atlas c",
           numeroPortal:3,
           descPortal:"abajo izq 2",
-          irZona:3,
+          irZona:2,
           aparecerPortal:4},{
           namePortal:"volantis",
           numeroPortal:4,
           descPortal:"abajo der 3",
-          irZona:4,
+          irZona:3,
           aparecerPortal:3}]},{
-        nombreZona:"zona 4",
-        numeroZona:4,
+        nombreZona:"zona 3",
+        numeroZona:3,
         listPortales:[{
           namePortal:"bootes",
           numeroPortal:1,
           descPortal:"arriba izq 0",
-          irZona:3,
+          irZona:2,
           aparecerPortal:4},{
           namePortal:"aquila",
           numeroPortal:2,
           descPortal:"arriba der 1",
-          irZona:1,
+          irZona:0,
           aparecerPortal:1},{
           namePortal:"eridani",
           numeroPortal:3,
           descPortal:"abajo izq 2",
-          irZona:3,
+          irZona:2,
           aparecerPortal:1},{
           namePortal:"bootes",
           numeroPortal:4,
           descPortal:"abajo der 3",
-          irZona:3,
+          irZona:2,
           aparecerPortal:1}]}]});
 todosLosMapas.push({
   nombreMapa:"auriga",
     listZona:[{
-        nombreZona:"zona 1",
-        numeroZona:1,
+        nombreZona:"zona 0",
+        numeroZona:0,
         listPortales:[{
           namePortal:"volantis",
           numeroPortal:1,
           descPortal:"izq arriba 0",
-          irZona:2,
+          irZona:1,
           aparecerPortal:3},{
           namePortal:"volantis",
           numeroPortal:2,
           descPortal:"der arriba 1",
-          irZona:3,
+          irZona:2,
           aparecerPortal:4},{
           namePortal:"persei",
           numeroPortal:3,
           descPortal:"izq abajo 2",
-          irZona:2,
+          irZona:1,
           aparecerPortal:2},{
           namePortal:"auriga",
           numeroPortal:4,
           descPortal:"der abajo 3",
+          irZona:2,
+          aparecerPortal:1}]},
+          {
+        nombreZona:"zona 1",
+        numeroZona:1,
+        listPortales:
+        [{
+          namePortal:"atlas a",
+          numeroPortal:1,
+          descPortal:"izq arriba 0",
+          irZona:1,
+          aparecerPortal:4
+          },
+          {
+          namePortal:"Sirius",
+          numeroPortal:2,
+          descPortal:"der arriba 1",
           irZona:3,
-          aparecerPortal:1}]},{
+          aparecerPortal:1
+          },
+          {
+          namePortal:"Sadatoni",
+          numeroPortal:3,
+          descPortal:"izq abajo 2",
+          irZona:1,
+          aparecerPortal:4
+          },
+          {
+          namePortal:"Eridani",
+          numeroPortal:4,
+          descPortal:"der abajo 3",
+          irZona:2,
+          aparecerPortal:2}]
+        },
+        {
         nombreZona:"zona 2",
         numeroZona:2,
-        listPortales:null},{
-        nombreZona:"zona 3",
-        numeroZona:3,
         listPortales:[{
           namePortal:"auriga",
           numeroPortal:1,
           descPortal:"arriba izq 0",
-          irZona:1,
+          irZona:0,
           aparecerPortal:4},{
           namePortal:"persei",
           numeroPortal:2,
           descPortal:"arriba der 1",
-          irZona:1,
+          irZona:0,
           aparecerPortal:3},{
           namePortal:"eridani",
           numeroPortal:3,
           descPortal:"abajo izq 2",
-          irZona:4,
+          irZona:3,
           aparecerPortal:3},{
           namePortal:"alcyone",
           numeroPortal:4,
           descPortal:"abajo der 3",
-          irZona:1,
+          irZona:0,
           aparecerPortal:4}]},{
-        nombreZona:"zona 4",
-        numeroZona:4,
+        nombreZona:"zona 3",
+        numeroZona:3,
         listPortales:[{
           namePortal:"alcyone",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:3,
+          irZona:2,
           aparecerPortal:4},{
           namePortal:"atlas c",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:4,
+          irZona:3,
           aparecerPortal:3},{
           namePortal:"eridani",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:1,
+          irZona:0,
           aparecerPortal:1},{
           namePortal:"alcyone",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:4,
+          irZona:3,
           aparecerPortal:4}]}]});
 todosLosMapas.push({
   nombreMapa:"bootes",
     listZona:[{
-        nombreZona:"zona 1",
-        numeroZona:1,
+        nombreZona:"zona 0",
+        numeroZona:0,
         listPortales:[{
           namePortal:"bootes",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:2,
+          irZona:1,
           aparecerPortal:2},{
           namePortal:"atlas a",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:3,
+          irZona:2,
           aparecerPortal:4},{
           namePortal:"sirius",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:3,
+          irZona:2,
           aparecerPortal:2},{
           namePortal:"atlas c",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:4,
+          irZona:3,
           aparecerPortal:1}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
+        nombreZona:"zona 1",
+        numeroZona:1,
         listPortales:[{
           namePortal:"cygni",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:1,
+          irZona:0,
           aparecerPortal:4},{
           namePortal:"bootes",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:1,
+          irZona:0,
           aparecerPortal:1},{
           namePortal:"atlas a",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:1,
+          irZona:0,
           aparecerPortal:3},{
           namePortal:"maia",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:4,
+          irZona:3,
           aparecerPortal:4}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
+        nombreZona:"zona 2",
+        numeroZona:2,
         listPortales:[{
           namePortal:"aquila",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:4,
+          irZona:3,
           aparecerPortal:4},{
           namePortal:"orion",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:4,
+          irZona:3,
           aparecerPortal:1},{
           namePortal:"aquila",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:1,
+          irZona:0,
           aparecerPortal:3},{
           namePortal:"aquila",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:4,
+          irZona:3,
           aparecerPortal:1}]},{
-        nombreZona:"zona 4",
-        numeroZona:4,
+        nombreZona:"zona 3",
+        numeroZona:3,
         listPortales:[{
           namePortal:"volantis",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:1,
+          irZona:0,
           aparecerPortal:4},{
           namePortal:"alcyone",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:1,
+          irZona:0,
           aparecerPortal:1},{
           namePortal:"persei",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:2,
+          irZona:1,
           aparecerPortal:4},{
           namePortal:"atlas a",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:2,
+          irZona:1,
           aparecerPortal:3}]}]});
 todosLosMapas.push({
   nombreMapa:"cygni",
     listZona:[{
-        nombreZona:"zona 1",
-        numeroZona:1,
+        nombreZona:"zona 0",
+        numeroZona:0,
         listPortales:[{
           namePortal:"orion",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:4,
+          irZona:3,
           aparecerPortal:2},{
           namePortal:"alcyone",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:4,
+          irZona:3,
           aparecerPortal:2},{
           namePortal:"sirius",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:4,
+          irZona:3,
           aparecerPortal:3},{
           namePortal:"bootes",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:2,
+          irZona:1,
           aparecerPortal:1}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
+        nombreZona:"zona 1",
+        numeroZona:1,
         listPortales:[{
           namePortal:"sadatoni",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:3,
+          irZona:2,
           aparecerPortal:2},{
           namePortal:"alcyone",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:2,
+          irZona:1,
           aparecerPortal:3},{
           namePortal:"orion",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:2,
+          irZona:1,
           aparecerPortal:3},{
           namePortal:"volantis",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:3,
+          irZona:2,
           aparecerPortal:3}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
+        nombreZona:"zona 2",
+        numeroZona:2,
         listPortales:[{
           namePortal:"maia",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:1,
+          irZona:0,
           aparecerPortal:1},{
           namePortal:"atlas b",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:3,
+          irZona:2,
           aparecerPortal:3},{
           namePortal:"aquila",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:3,
+          irZona:2,
           aparecerPortal:1},{
           namePortal:"atlas a",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:3,
+          irZona:2,
           aparecerPortal:3}]},{
-        nombreZona:"zona 4",
-        numeroZona:4,
+        nombreZona:"zona 3",
+        numeroZona:3,
         listPortales:[{
           namePortal:"eridani",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:4,
+          irZona:3,
           aparecerPortal:2},{
           namePortal:"eridani",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:3,
+          irZona:2,
           aparecerPortal:3},{
           namePortal:"persei",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:4,
+          irZona:3,
           aparecerPortal:2},{
           namePortal:"persei",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:2,
+          irZona:1,
           aparecerPortal:1}]}]});
 todosLosMapas.push({
   nombreMapa:"eridani",
     listZona:[{
-        nombreZona:"zona 1",
-        numeroZona:1,
+        nombreZona:"zona 0",
+        numeroZona:0,
         listPortales:[{
           namePortal:"auriga",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:4,
+          irZona:3,
           aparecerPortal:3},{
           namePortal:"sirius",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:2,
+          irZona:1,
           aparecerPortal:4},{
           namePortal:"atlas a",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:1,
+          irZona:0,
           aparecerPortal:1},{
           namePortal:"atlas a",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:3,
+          irZona:2,
           aparecerPortal:1}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
+        nombreZona:"zona 1",
+        numeroZona:1,
         listPortales:[{
           namePortal:"sadatoni",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:2,
+          irZona:1,
           aparecerPortal:2},{
           namePortal:"persei",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:1,
+          irZona:0,
           aparecerPortal:2},{
           namePortal:"atlas c",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:1,
+          irZona:0,
           aparecerPortal:1},{
           namePortal:"helvetios",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:4,
+          irZona:3,
           aparecerPortal:3}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
+        nombreZona:"zona 2",
+        numeroZona:2,
         listPortales:[{
           namePortal:"aquila",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:4,
+          irZona:3,
           aparecerPortal:3},{
           namePortal:"auriga",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:2,
+          irZona:1,
           aparecerPortal:4},{
           namePortal:"cygni",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:4,
+          irZona:3,
           aparecerPortal:2},{
           namePortal:"persei",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:4,
+          irZona:3,
           aparecerPortal:3}]},{
-        nombreZona:"zona 4",
-        numeroZona:4,
+        nombreZona:"zona 3",
+        numeroZona:3,
         listPortales:[{
           namePortal:"helvetios",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:2,
+          irZona:1,
           aparecerPortal:3},{
           namePortal:"cygni",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:4,
+          irZona:3,
           aparecerPortal:1},{
           namePortal:"auriga",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:3,
+          irZona:2,
           aparecerPortal:3},{
           namePortal:"atlas b",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:4,
+          irZona:3,
           aparecerPortal:4}]}]});
 todosLosMapas.push({
   nombreMapa:"helvetios",
     listZona:[{
-        nombreZona:"zona 1",
-        numeroZona:1,
+        nombreZona:"zona 0",
+        numeroZona:0,
         listPortales:[{
           namePortal:"maia",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:2,
+          irZona:1,
           aparecerPortal:2},{
           namePortal:"atlas a",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:2,
+          irZona:1,
           aparecerPortal:2},{
           namePortal:"persei",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:3,
+          irZona:2,
           aparecerPortal:4},{
           namePortal:"atlas b",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:3,
+          irZona:2,
           aparecerPortal:1}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
+        nombreZona:"zona 1",
+        numeroZona:1,
         listPortales:[{
           namePortal:"helvetios",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:3,
+          irZona:2,
           aparecerPortal:3},{
           namePortal:"atlas a",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:2,
+          irZona:1,
           aparecerPortal:1},{
           namePortal:"eridani",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:4,
+          irZona:3,
           aparecerPortal:1},{
           namePortal:"sadatoni",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:2,
+          irZona:1,
           aparecerPortal:3}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
+        nombreZona:"zona 2",
+        numeroZona:2,
         listPortales:[{
           namePortal:"maia",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:3,
+          irZona:2,
           aparecerPortal:4},{
           namePortal:"persei",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:1,
+          irZona:0,
           aparecerPortal:4},{
           namePortal:"helvetios",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:2,
+          irZona:1,
           aparecerPortal:1},{
           namePortal:"persei",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:2,
+          irZona:1,
           aparecerPortal:3}]},{
-        nombreZona:"zona 4",
-        numeroZona:4,
+        nombreZona:"zona 3",
+        numeroZona:3,
         listPortales:[{
           namePortal:"sirius",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:2,
+          irZona:1,
           aparecerPortal:1},{
           namePortal:"atlas b",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:4,
+          irZona:3,
           aparecerPortal:1},{
           namePortal:"eridani",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:2,
+          irZona:1,
           aparecerPortal:4},{
           namePortal:"alcyone",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:4,
+          irZona:3,
           aparecerPortal:1}]}]});
 todosLosMapas.push({
   nombreMapa:"maia",
     listZona:[{
-        nombreZona:"zona 1",
-        numeroZona:1,
+        nombreZona:"zona 0",
+        numeroZona:0,
         listPortales:[{
           namePortal:"cygni",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:3,
+          irZona:2,
           aparecerPortal:1},{
           namePortal:"atlas b",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:1,
+          irZona:0,
           aparecerPortal:1},{
           namePortal:"atlas b",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:1,
+          irZona:0,
           aparecerPortal:2},{
           namePortal:"volantis",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:1,
+          irZona:0,
           aparecerPortal:1}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
+        nombreZona:"zona 1",
+        numeroZona:1,
         listPortales:[{
           namePortal:"alcyone",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:1,
+          irZona:0,
           aparecerPortal:3},{
           namePortal:"helvetios",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:1,
+          irZona:0,
           aparecerPortal:1},{
           namePortal:"atlas a",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:4,
+          irZona:3,
           aparecerPortal:1},{
           namePortal:"atlas c",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:2,
+          irZona:1,
           aparecerPortal:3}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
+        nombreZona:"zona 2",
+        numeroZona:2,
         listPortales:[{
           namePortal:"atlas b",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:4,
+          irZona:3,
           aparecerPortal:2},{
           namePortal:"maia",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:4,
+          irZona:3,
           aparecerPortal:2},{
           namePortal:"sirius",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:1,
+          irZona:0,
           aparecerPortal:2},{
           namePortal:"helvetios",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:3,
+          irZona:2,
           aparecerPortal:1}]},{
-        nombreZona:"zona 4",
-        numeroZona:4,
+        nombreZona:"zona 3",
+        numeroZona:3,
         listPortales:[{
           namePortal:"orion",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:3,
+          irZona:2,
           aparecerPortal:3},{
           namePortal:"maia",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:3,
+          irZona:2,
           aparecerPortal:2},{
           namePortal:"aquila",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:1,
+          irZona:0,
           aparecerPortal:2},{
           namePortal:"bootes",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:2,
+          irZona:1,
           aparecerPortal:4}]}]});
 todosLosMapas.push({
   nombreMapa:"orion",
     listZona:[{
-        nombreZona:"zona 1",
-        numeroZona:1,
+        nombreZona:"zona 0",
+        numeroZona:0,
         listPortales:[{
           namePortal:"atlas b",
           numeroPortal:1,
           descPortal:"izq arriba 1",
-          irZona:3,
+          irZona:2,
           aparecerPortal:2},{
           namePortal:"atlas b",
           numeroPortal:2,
           descPortal:"der arriba 2",
-          irZona:2,
+          irZona:1,
           aparecerPortal:2},{
           namePortal:"atlas c",
           numeroPortal:3,
           descPortal:"izq abajo 3",
-          irZona:2,
+          irZona:1,
           aparecerPortal:4},{
           namePortal:"volantis",
           numeroPortal:4,
           descPortal:"der abajo 4",
-          irZona:2,
+          irZona:1,
           aparecerPortal:4}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
+        nombreZona:"zona 1",
+        numeroZona:1,
         listPortales:[{
           namePortal:"sadatoni",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:1,
+          irZona:0,
           aparecerPortal:4},{
           namePortal:"volantis",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:2,
+          irZona:1,
           aparecerPortal:2},{
           namePortal:"cygni",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:2,
+          irZona:1,
           aparecerPortal:3},{
           namePortal:"atlas c",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:4,
+          irZona:3,
           aparecerPortal:4}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
+        nombreZona:"zona 2",
+        numeroZona:2,
         listPortales:[{
           namePortal:"atlas b",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:2,
+          irZona:1,
           aparecerPortal:3},{
           namePortal:"persei",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:1,
+          irZona:0,
           aparecerPortal:1},{
           namePortal:"maia",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:4,
+          irZona:3,
           aparecerPortal:1},{
           namePortal:"alcyone",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:1,
+          irZona:0,
           aparecerPortal:2}]},{
-        nombreZona:"zona 4",
-        numeroZona:4,
+        nombreZona:"zona 3",
+        numeroZona:3,
         listPortales:[{
           namePortal:"bootes",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:3,
+          irZona:2,
           aparecerPortal:2},{
           namePortal:"cygni",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:1,
+          irZona:0,
           aparecerPortal:1},{
           namePortal:"atlas c",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:1,
+          irZona:0,
           aparecerPortal:1},{
           namePortal:"atlas c",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:2,
+          irZona:1,
           aparecerPortal:2}]}]});
 todosLosMapas.push({
   nombreMapa:"persei",
     listZona:[{
-        nombreZona:"zona 1",
-        numeroZona:1,
+        nombreZona:"zona 0",
+        numeroZona:0,
         listPortales:[{
           namePortal:"orion",
           numeroPortal:1,
           descPortal:"izq arriba 1",
-          irZona:3,
+          irZona:2,
           aparecerPortal:2},{
           namePortal:"eridani",
           numeroPortal:2,
           descPortal:"der arriba 2",
-          irZona:2,
+          irZona:1,
           aparecerPortal:2},{
           namePortal:"auriga",
           numeroPortal:3,
           descPortal:"izq abajo 3",
-          irZona:3,
+          irZona:2,
           aparecerPortal:2},{
           namePortal:"helvetios",
           numeroPortal:4,
           descPortal:"der abajo 4",
-          irZona:3,
+          irZona:2,
           aparecerPortal:2}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
+        nombreZona:"zona 1",
+        numeroZona:1,
         listPortales:[{
           namePortal:"cygni",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:4,
+          irZona:3,
           aparecerPortal:4},{
           namePortal:"auriga",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:1,
+          irZona:0,
           aparecerPortal:3},{
           namePortal:"helvetios",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:3,
+          irZona:2,
           aparecerPortal:4},{
           namePortal:"bootes",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:4,
+          irZona:3,
           aparecerPortal:3}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
+        nombreZona:"zona 2",
+        numeroZona:2,
         listPortales:[{
           namePortal:"volantis",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:2,
+          irZona:1,
           aparecerPortal:1},{
           namePortal:"atlas c",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:3,
+          irZona:2,
           aparecerPortal:3},{
           namePortal:"sadatoni",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:4,
+          irZona:3,
           aparecerPortal:4},{
           namePortal:"helvetios",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:1,
+          irZona:0,
           aparecerPortal:3}]},{
-        nombreZona:"zona 4",
-        numeroZona:4,
+        nombreZona:"zona 3",
+        numeroZona:3,
         listPortales:[{
           namePortal:"atlas c",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:1,
+          irZona:0,
           aparecerPortal:4},{
           namePortal:"cygni",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:4,
+          irZona:3,
           aparecerPortal:3},{
           namePortal:"eridani",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:3,
+          irZona:2,
           aparecerPortal:4},{
           namePortal:"atlas b",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:2,
+          irZona:1,
           aparecerPortal:1}]}]});
 todosLosMapas.push({
   nombreMapa:"sadatoni",
     listZona:[{
-        nombreZona:"zona 1",
-        numeroZona:1,
+        nombreZona:"zona 0",
+        numeroZona:0,
         listPortales:[{
           namePortal:"sirius",
           numeroPortal:1,
           descPortal:"izq arriba 1",
-          irZona:3,
+          irZona:2,
           aparecerPortal:3},{
           namePortal:"atlas c",
           numeroPortal:2,
           descPortal:"der arriba 2",
-          irZona:4,
+          irZona:3,
           aparecerPortal:2},{
           namePortal:"alcyone",
           numeroPortal:3,
           descPortal:"izq abajo 3",
-          irZona:4,
+          irZona:3,
           aparecerPortal:3},{
           namePortal:"orion",
           numeroPortal:4,
           descPortal:"der abajo 4",
-          irZona:2,
+          irZona:1,
           aparecerPortal:1}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
+        nombreZona:"zona 1",
+        numeroZona:1,
         listPortales:[{
           namePortal:"atlas c",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:2,
+          irZona:1,
           aparecerPortal:2},{
           namePortal:"eridani",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:2,
+          irZona:1,
           aparecerPortal:1},{
           namePortal:"helvetios",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:2,
+          irZona:1,
           aparecerPortal:4},{
           namePortal:"auriga",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:2,
+          irZona:1,
           aparecerPortal:3}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
+        nombreZona:"zona 2",
+        numeroZona:2,
         listPortales:[{
           namePortal:"sirius",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:1,
+          irZona:0,
           aparecerPortal:1},{
           namePortal:"cygni",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:2,
+          irZona:1,
           aparecerPortal:1},{
           namePortal:"atlas b",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:4,
+          irZona:3,
           aparecerPortal:3},{
           namePortal:"aquila",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:2,
+          irZona:1,
           aparecerPortal:2}]},{
-        nombreZona:"zona 4",
-        numeroZona:4,
+        nombreZona:"zona 3",
+        numeroZona:3,
         listPortales:[{
           namePortal:"volantis",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:4,
+          irZona:3,
           aparecerPortal:4},{
           namePortal:"sirius",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:4,
+          irZona:3,
           aparecerPortal:2},{
           namePortal:"atlas c",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:3,
+          irZona:2,
           aparecerPortal:1},{
           namePortal:"persei",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:3,
+          irZona:2,
           aparecerPortal:3}]}]});
 todosLosMapas.push({
   nombreMapa:"sirius",
     listZona:[{
-        nombreZona:"zona 1",
-        numeroZona:1,
+        nombreZona:"zona 0",
+        numeroZona:0,
         listPortales:[{
           namePortal:"sadatoni",
           numeroPortal:1,
           descPortal:"izq arriba 1",
-          irZona:3,
+          irZona:2,
           aparecerPortal:1},{
           namePortal:"maia",
           numeroPortal:2,
           descPortal:"der arriba 2",
-          irZona:3,
+          irZona:2,
           aparecerPortal:3},{
           namePortal:"alcyone",
           numeroPortal:3,
           descPortal:"izq abajo 3",
-          irZona:2,
+          irZona:1,
           aparecerPortal:1},{
           namePortal:"atlas b",
           numeroPortal:4,
           descPortal:"der abajo 4",
-          irZona:1,
+          irZona:0,
           aparecerPortal:4}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
+        nombreZona:"zona 1",
+        numeroZona:1,
         listPortales:[{
           namePortal:"helvetios",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:4,
+          irZona:3,
           aparecerPortal:1},{
           namePortal:"aquila",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:1,
+          irZona:0,
           aparecerPortal:4},{
           namePortal:"alcyone",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:2,
+          irZona:1,
           aparecerPortal:4},{
           namePortal:"eridani",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:1,
+          irZona:0,
           aparecerPortal:2}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
+        nombreZona:"zona 2",
+        numeroZona:2,
         listPortales:[{
           namePortal:"atlas a",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:4,
+          irZona:3,
           aparecerPortal:3},{
           namePortal:"bootes",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:1,
+          irZona:0,
           aparecerPortal:3},{
           namePortal:"sadatoni",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:1,
+          irZona:0,
           aparecerPortal:1},{
           namePortal:"atlas a",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:3,
+          irZona:2,
           aparecerPortal:2}]},{
-        nombreZona:"zona 4",
-        numeroZona:4,
+        nombreZona:"zona 3",
+        numeroZona:3,
         listPortales:[{
           namePortal:"auriga",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:2,
+          irZona:1,
           aparecerPortal:2},{
           namePortal:"sadatoni",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:4,
+          irZona:3,
           aparecerPortal:2},{
           namePortal:"cygni",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:1,
+          irZona:0,
           aparecerPortal:3},{
           namePortal:"atlas a",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:1,
+          irZona:0,
           aparecerPortal:2}]}]});
 todosLosMapas.push({
   nombreMapa:"volantis",
     listZona:[{
-        nombreZona:"zona 1",
-        numeroZona:1,
+        nombreZona:"zona 0",
+        numeroZona:0,
         listPortales:[{
           namePortal:"maia",
           numeroPortal:1,
           descPortal:"izq arriba 1",
-          irZona:1,
+          irZona:0,
           aparecerPortal:4},{
           namePortal:"volantis",
           numeroPortal:2,
           descPortal:"der arriba 2",
-          irZona:4,
+          irZona:3,
           aparecerPortal:2},{
           namePortal:"atlas c",
           numeroPortal:3,
           descPortal:"izq abajo 3",
-          irZona:3,
+          irZona:2,
           aparecerPortal:2},{
           namePortal:"bootes",
           numeroPortal:4,
           descPortal:"der abajo 4",
-          irZona:4,
+          irZona:3,
           aparecerPortal:1}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
+        nombreZona:"zona 1",
+        numeroZona:1,
         listPortales:[{
           namePortal:"persei",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:3,
+          irZona:2,
           aparecerPortal:1},{
           namePortal:"orion",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:2,
+          irZona:1,
           aparecerPortal:2},{
           namePortal:"auriga",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:1,
+          irZona:0,
           aparecerPortal:1},{
           namePortal:"orion",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:1,
+          irZona:0,
           aparecerPortal:4}]},{
+        nombreZona:"zona 2",
+        numeroZona:2,
+        listPortales:[{
+          namePortal:"volantis",
+          numeroPortal:1,
+          descPortal:"arriba izq 1",
+          irZona:3,
+          aparecerPortal:1},{
+          namePortal:"alcyone",
+          numeroPortal:2,
+          descPortal:"arriba der 2",
+          irZona:2,
+          aparecerPortal:1},{
+          namePortal:"cygni",
+          numeroPortal:3,
+          descPortal:"abajo izq 3",
+          irZona:1,
+          aparecerPortal:4},{
+          namePortal:"auriga",
+          numeroPortal:4,
+          descPortal:"abajo der 4",
+          irZona:0,
+          aparecerPortal:2}]},{
         nombreZona:"zona 3",
         numeroZona:3,
         listPortales:[{
           namePortal:"volantis",
           numeroPortal:1,
           descPortal:"arriba izq 1",
-          irZona:4,
-          aparecerPortal:1},{
-          namePortal:"alcyone",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:3,
-          aparecerPortal:1},{
-          namePortal:"cygni",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
           irZona:2,
-          aparecerPortal:4},{
-          namePortal:"auriga",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:1,
-          aparecerPortal:2}]},{
-        nombreZona:"zona 4",
-        numeroZona:4,
-        listPortales:[{
-          namePortal:"volantis",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:3,
           aparecerPortal:1},{
           namePortal:"volantis",
           numeroPortal:2,
           descPortal:"arriba der 2",
-          irZona:1,
+          irZona:0,
           aparecerPortal:2},{
           namePortal:"aquila",
           numeroPortal:3,
           descPortal:"abajo izq 3",
-          irZona:3,
+          irZona:2,
           aparecerPortal:4},{
           namePortal:"sadatoni",
           numeroPortal:4,
           descPortal:"abajo der 4",
-          irZona:4,
+          irZona:3,
           aparecerPortal:1}]}]});
 
 

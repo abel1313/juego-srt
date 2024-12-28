@@ -27,9 +27,36 @@
             cursor: pointer;
         }
         .output {
-            margin-top: 20px;
-            font-size: 18px;
-        }
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.output {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.ruta {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+}
+
+.paso {
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+}
+
+.portal {
+    cursor: pointer;
+}
+
+.portal.seleccionado {
+    background-color: #2a7697; /* O cualquier color que prefieras */
+}
+
+
     </style>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
@@ -182,16 +209,26 @@
 
             let rutaNum = 1;
             rutas.forEach(ruta => {
-                const rutaDiv = document.createElement("div");
-                rutaDiv.innerHTML = `<strong>Ruta ${rutaNum} encontrada: </br> Origen ${origenMapa} zona ${origenZona}</strong>`;
-                ruta.forEach(paso => {
-                    const pasoDiv = document.createElement("div");
-                    pasoDiv.innerHTML = `Portal: ${paso.numeroPortal}, Mapa: ${paso.nombreMapa}, Zona: ${paso.numeroZona}`;
-                    rutaDiv.appendChild(pasoDiv);
-                });
-                output.appendChild(rutaDiv);
-                rutaNum++;
-            });
+    const rutaDiv = document.createElement("div");
+    rutaDiv.classList.add("ruta");
+    rutaDiv.innerHTML = `<strong>Ruta ${rutaNum} encontrada:</br>Origen ${origenMapa} zona ${origenZona}</strong>`;
+    ruta.forEach(paso => {
+        const pasoDiv = document.createElement("div");
+        pasoDiv.innerHTML = `<span class="portal">Portal: ${paso.numeroPortal}</span>, Mapa: ${paso.nombreMapa}, Zona: ${paso.numeroZona}`;
+        pasoDiv.classList.add("paso"); // Añadir clase para estilos
+        rutaDiv.appendChild(pasoDiv);
+
+        // Añadir evento de clic a cada portal
+        const portalSpan = pasoDiv.querySelector(".portal");
+        portalSpan.addEventListener('click', () => {
+            portalSpan.classList.toggle('seleccionado');
+        });
+    });
+    output.appendChild(rutaDiv);
+    rutaNum++;
+});
+
+
         }
 
         // Ejemplo de cómo agregar un mapa a la lista todosLosMapas (deberás hacerlo con todos los mapas que tienes)

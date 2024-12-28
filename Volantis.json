@@ -1,0 +1,36 @@
+{
+    "Volantis": {
+        "MAPA 1": {
+            "portales":{
+                "1": "izq arriba Maia",
+                "2": "der arriba Volantis ",
+                "3": "izq abajo Atlas C",
+                "4": "der abajo Bootes"
+            }
+        },
+        "MAPA 2": {
+            "portales":{
+                "1": "arriba izq Persei",
+                "2": "arriba der Orion ",
+                "3": "abajo izq Auriga ",
+                "4": "abajo der Orion "
+            }
+        },
+        "MAPA 3": {
+            "portales":{
+                "1": "arriba izq Volantis",
+                "2": "arriba der Alcyone ",
+                "3": "abajo izq Cygni ",
+                "4": "abajo der Auriga "
+            }
+        },
+        "MAPA 4": {
+            "portales":{
+                "1": "arriba izq Volantis  ",
+                "2": "arriba der Volantis ",
+                "3": "abajo izq Aquila ",
+                "4": "abajo der Sadatoni "
+            }
+        }
+    }
+}

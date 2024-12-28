@@ -1,0 +1,37 @@
+{
+    "ATLAS B": {
+        "MAPA 1": {
+
+            "portales":{
+                "1": "izq arriba MAIA --",
+                "2": "der arriba MAIA --",
+                "3": "izq abajo ATLAS A",
+                "4": "der abajo Sirius"
+            }
+        },
+        "MAPA 2": {
+            "portales":{
+                "1": "arriba izq Persei ",
+                "2": "arriba der Orion ",
+                "3": "abajo izq Orion ",
+                "4": "abajo der Aquila"
+            }
+        },
+        "MAPA 3": {
+            "portales":{
+                "1": "arriba izq Helvetios ",
+                "2": "arriba der Orion ",
+                "3": "abajo izq Cygni ",
+                "4": "abajo der Atlas C"
+            }
+        },
+        "MAPA 4": {
+            "portales":{
+                "1": "arriba izq Helvetios ",
+                "2": "arriba der Maia ",
+                "3": "abajo izq Sadatoni ",
+                "4": "abajo der Eridani "
+            }
+        }
+    }
+}

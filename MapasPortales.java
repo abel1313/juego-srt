@@ -118,7 +118,6 @@ public class MapasPortales {
 
         mapaAlcyone2.setListZona(listZonaAlcyone2);
 
-        
 
 
         // MAPA 3
@@ -2925,12 +2924,21 @@ public class MapasPortales {
         RutaFinder rutaFinder = new RutaFinder(todosLosMapas);
 
             // Ejemplo de llamada al método
-            String mapaOrigen = "atlas b ";
+            String mapaOrigen = "atlas b";
             int zonaOrigen = 1;
-            String mapaDestino = "Volantis";
+            String mapaDestino = "volantis";
             int zonaDestino = 1;
             List<Set<Paso>>  pasos = rutaFinder.encontrarRutaConPasos(mapaOrigen, zonaOrigen, mapaDestino, zonaDestino);
 
+            Mapa mapaInicio = todosLosMapas.stream().filter(f-> f.getNombreMapa().equalsIgnoreCase(mapaOrigen.trim())  ).findFirst().orElse(new Mapa());
+            Zona zonaInicio = mapaInicio.getListZona().stream().filter(fi->fi.getNumeroZona() == zonaOrigen ).findFirst().orElse(new Zona());
+            System.out.println("zona "+zonaInicio);
+            System.out.println(" Ruta Inicio "+mapaOrigen+ " zona origen "+ zonaOrigen);
+            pasos.forEach(item->{
+                item.forEach(itemFo->{
+                    System.out.println("Mapa: "+itemFo.getNombreMapa()+" Zona "+ itemFo.getNumeroZona() +" Portal: "+ itemFo.getNumeroPortal()+" "  );
+                });
+            });
 
 
 

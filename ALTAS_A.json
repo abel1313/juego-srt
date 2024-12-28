@@ -1,0 +1,36 @@
+{
+    "ATLAS A": {
+        "MAPA 1": {
+            "portales":{
+                "1": "izq arriba ERIDANI",
+                "2": "der arriba SIRIUS",
+                "3": "izq abajo BOOTES",
+                "4": "der abajo ATLAS B"
+            }
+        },
+        "MAPA 2": {
+            "portales":{
+                "1": "arriba izq Helvetios ",
+                "2": "arriba der Helvetios ",
+                "3": "abajo izq Bootes",
+                "4": "abajo der Auriga"
+            }
+        },
+        "MAPA 3": {
+            "portales":{
+                "1": "arriba izq Eridani  ",
+                "2": "arriba der Sirius ",
+                "3": "abajo izq Cygni ",
+                "4": "abajo der Bootes "
+            }
+        },
+        "MAPA 4": {
+            "portales":{
+                "1": "arriba izq Maia ",
+                "2": "arriba der Aquila ",
+                "3": "abajo izq Sirius ",
+                "4": "abajo der Aquila "
+            }
+        }
+    }
+}

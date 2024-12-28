@@ -1,0 +1,36 @@
+{
+    "BOOTES": {
+        "MAPA 1": {
+            "portales": {
+                "1": "arriba izq Bootes",
+                "2": "arriba der Atlas A",
+                "3": "abajo izq Sirius ",
+                "4": "abajo der Atlas C"
+            }
+        },
+        "MAPA 2": {
+            "portales": {
+                "1": "arriba izq Cygni ",
+                "2": "arriba der Bootes ",
+                "3": "abajo izq ATLAS A",
+                "4": "abajo der Maia"
+            }
+        },
+        "MAPA 3": {
+            "portales": {
+                "1": "arriba izq Aquila  ",
+                "2": "arriba der Orion ",
+                "3": "abajo izq Aquila ",
+                "4": "abajo der Aquila "
+            }
+        },
+        "MAPA 4": {
+            "portales": {
+                "1": "arriba izq Volantis ",
+                "2": "arriba der Alcyone ",
+                "3": "abajo izq Persei ",
+                "4": "abajo der Atlas A"
+            }
+        }
+    }
+}

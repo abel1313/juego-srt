@@ -1,1840 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rutas de Mapas</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            padding: 20px;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-        select, input[type="text"] {
-            padding: 10px;
-            font-size: 16px;
-            margin: 5px 0;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .output {
-    margin-top: 20px;
-    font-size: 18px;
-}
-
-.output {
-    margin-top: 20px;
-    font-size: 18px;
-}
-
-.ruta {
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-}
-
-.paso {
-    padding: 5px;
-    margin: 5px 0;
-    border: 1px solid #ddd;
-}
-
-.portal {
-    cursor: pointer;
-}
-
-.portal.seleccionado {
-    background-color: #2a7697; /* O cualquier color que prefieras */
-}
-
-
-    </style>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rutas de Mapas</title>
+  <link rel="stylesheet" href="./style/estilos.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
+
 <body>
-    <div class="container">
-        <h1>Buscar Ruta</h1>
-        <label for="origenMapa">Mapa de Origen:</label>
-        <input id="origenMapa" type="text">
+  <div class="container">
+    <h1>Buscar Ruta</h1>
+    <label for="origenMapa">Mapa de Origen:</label>
+    <input id="origenMapa" type="text">
 
-        <label for="origenZona">Zona de Origen:</label>
-        <select id="origenZona">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
+    <label for="origenZona">Zona de Origen:</label>
+    <select id="origenZona">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
 
-        <label for="destinoMapa">Mapa de Destino:</label>
-        <input id="destinoMapa" type="text">
+    <label for="destinoMapa">Mapa de Destino:</label>
+    <input id="destinoMapa" type="text">
 
-        <label for="destinoZona">Zona de Destino:</label>
-        <select id="destinoZona">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
+    <label for="destinoZona">Zona de Destino:</label>
+    <select id="destinoZona">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
 
-        <button class="btn btn-success" onclick="buscarRuta()">Buscar Ruta</button>
+    <button class="btn btn-success" onclick="buscarRuta()">Buscar Ruta</button>
 
-        <div class="output" id="output"></div>
-    </div>
+    <div class="output" id="output"></div>
+  </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <script>
-        const mapas = ["alcyone", "atlas a", "atlas b", "atlas c", "aquila", "auriga", "bootes", "cygni", "eridani", "helvetios", "maia", "orion", "persei", "sadatoni", "sirius", "volantis"];
-        const todosLosMapas = []; // Aquí se agregarán todos los mapas como en Java
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  
+  <script type="module">
+    import alcyone from './alcyone/alcyoneAdd.js';
+    import atlasA from './atlasA/atlasAAdd.js';
+    import atlasB from './atlasB/atlasBAdd.js';
+    import atlasC from './atlasC/atlasCAdd.js';
+    import aquila from './aquila/aquilaAdd.js';
+    import auriga from './auriga/aurigaAdd.js';
+    import bootes from './bootes/bootesAdd.js';
+    import cygni from './cygni/cygniAdd.js';
+    import eridani from './eridani/eridaniAdd.js';
+    import helvetios from './helvetios/helvetiosAdd.js';
+    import maia from './maia/maiaAdd.js';
+    import orion from './orion/orionAdd.js';
+    import persei from './persei/perseiAdd.js';
+    import sadatoni from './sadatoni/sadatoniAdd.js';
+    import sirius from './sirius/siriusAdd.js';
+    import volantis from './volantis/volantisAdd.js';
+    todosLosMapas.push(alcyone);
+    todosLosMapas.push(atlasA);
+    todosLosMapas.push(atlasB);
+    todosLosMapas.push(atlasC);
+    todosLosMapas.push(aquila);// REVISE HASTA AQUI
+    todosLosMapas.push(auriga);
+    todosLosMapas.push(bootes);
+    todosLosMapas.push(cygni);
+    todosLosMapas.push(eridani);
+    todosLosMapas.push(helvetios);
+    todosLosMapas.push(maia);
+    todosLosMapas.push(orion);
+    todosLosMapas.push(persei);
+    todosLosMapas.push(sadatoni);
+    todosLosMapas.push(sirius);
+    todosLosMapas.push(volantis);
+    console.log(todosLosMapas);
+  </script>
+  <script>
+    const mapas = ["alcyone", "atlas a", "atlas b", "atlas c", "aquila", "auriga", "bootes", "cygni", "eridani",
+      "helvetios", "maia", "orion", "persei", "sadatoni", "sirius", "volantis"
+    ];
+    const todosLosMapas = []; // Aquí se agregarán todos los mapas como en Java
 
-        // Clase Paso
-        class Paso {
-            constructor(nombreMapa, numeroZona, numeroPortal) {
-                this.nombreMapa = nombreMapa;
-                this.numeroZona = numeroZona;
-                this.numeroPortal = numeroPortal;
-            }
-        }
+    // Clase Paso
+    class Paso {
+      constructor(nombreMapa, numeroZona, numeroPortal) {
+        this.nombreMapa = nombreMapa;
+        this.numeroZona = numeroZona;
+        this.numeroPortal = numeroPortal;
+      }
+    }
 
-        // Clase Nodo
-        class Nodo {
-            constructor(mapa, zona, aparecerPortal, pasos) {
-                this.mapa = mapa;
-                this.zona = zona;
-                this.aparecerPortal = aparecerPortal;
-                this.pasos = pasos;
-            }
-        }
+    // Clase Nodo
+    class Nodo {
+      constructor(mapa, zona, aparecerPortal, pasos) {
+        this.mapa = mapa;
+        this.zona = zona;
+        this.aparecerPortal = aparecerPortal;
+        this.pasos = pasos;
+      }
+    }
 
-        // Clase RutaFinder
-        class RutaFinder {
-            constructor(todosLosMapas) {
-                this.todosLosMapas = todosLosMapas;
-            }
+    // Clase RutaFinder
+    class RutaFinder {
+      constructor(todosLosMapas) {
+        this.todosLosMapas = todosLosMapas;
+      }
 
-            encontrarRutaConPasos(mapaOrigen, zonaOrigen, mapaDestino, zonaDestino) {
-                const visitados = new Set();
-                const rutasEncontradas = [];
-                const queue = [];
-                queue.push(new Nodo(mapaOrigen, zonaOrigen, -1, new Set()));
+      encontrarRutaConPasos(mapaOrigen, zonaOrigen, mapaDestino, zonaDestino) {
+        const visitados = new Set();
+        const rutasEncontradas = [];
+        const queue = [];
+        queue.push(new Nodo(mapaOrigen, zonaOrigen, -1, new Set()));
 
-                while (queue.length > 0) {
-                    const actual = queue.shift();
-                    const mapaActual = actual.mapa;
-                    const zonaActual = actual.zona;
-                    const pasosActuales = actual.pasos;
+        while (queue.length > 0) {
+          const actual = queue.shift();
+          const mapaActual = actual.mapa;
+          const zonaActual = actual.zona;
+          const pasosActuales = actual.pasos;
 
-                    // Marcar la visita actual
-                    const claveVisita = `${mapaActual}-${zonaActual}`;
-                    if (visitados.has(claveVisita)) {
-                        continue;
+          // Marcar la visita actual
+          const claveVisita = `${mapaActual}-${zonaActual}`;
+          if (visitados.has(claveVisita)) {
+            continue;
+          }
+          visitados.add(claveVisita);
+
+          // Agregar el paso actual a la ruta
+          if (!(mapaActual === mapaOrigen && zonaActual === zonaOrigen)) {
+            pasosActuales.add(new Paso(mapaActual, zonaActual, actual.aparecerPortal));
+          }
+
+          // Verificar si hemos llegado al destino
+          if (mapaActual.toLowerCase() === mapaDestino.toLowerCase() && zonaActual === zonaDestino) {
+            rutasEncontradas.push(new Set([...pasosActuales]));
+            continue;
+          }
+
+          // Obtener los portales de la zona actual
+          const mapa = this.obtenerMapaPorNombre(mapaActual);
+          if (mapa) {
+            for (const zona of mapa.listZona) {
+              if (zona.numeroZona === zonaActual) {
+                const portales = zona.listPortales;
+                if (portales) {
+                  for (const portal of portales) {
+                    if (portal && portal.namePortal) {
+                      const nuevoNodo = new Nodo(portal.namePortal, portal.irZona, portal.numeroPortal, new Set([...
+                        pasosActuales
+                      ]));
+                      queue.push(nuevoNodo);
                     }
-                    visitados.add(claveVisita);
-
-                    // Agregar el paso actual a la ruta
-                    if (!(mapaActual === mapaOrigen && zonaActual === zonaOrigen)) {
-                        pasosActuales.add(new Paso(mapaActual, zonaActual, actual.aparecerPortal));
-                    }
-
-                    // Verificar si hemos llegado al destino
-                    if (mapaActual.toLowerCase() === mapaDestino.toLowerCase() && zonaActual === zonaDestino) {
-                        rutasEncontradas.push(new Set([...pasosActuales]));
-                        continue;
-                    }
-
-                    // Obtener los portales de la zona actual
-                    const mapa = this.obtenerMapaPorNombre(mapaActual);
-                    if (mapa) {
-                        for (const zona of mapa.listZona) {
-                            if (zona.numeroZona === zonaActual) {
-                                const portales = zona.listPortales;
-                                if (portales) {
-                                    for (const portal of portales) {
-                                        if (portal && portal.namePortal) {
-                                            const nuevoNodo = new Nodo(portal.namePortal, portal.irZona, portal.numeroPortal, new Set([...pasosActuales]));
-                                            queue.push(nuevoNodo);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                  }
                 }
-
-                return rutasEncontradas;
+              }
             }
-
-            obtenerMapaPorNombre(nombreMapa) {
-                return this.todosLosMapas.find(mapa => mapa.nombreMapa.toLowerCase() === nombreMapa.toLowerCase());
-            }
+          }
         }
 
-        // Función para inicializar el autocomplete
-        $(function() {
-            $("#origenMapa, #destinoMapa").autocomplete({
-                source: mapas
-            });
-        });
+        return rutasEncontradas;
+      }
 
-        // Función para buscar la ruta
-        function buscarRuta() {
-            const origenMapa = document.getElementById("origenMapa").value.toLowerCase();
-            const origenZona = parseInt(document.getElementById("origenZona").value);
-            const destinoMapa = document.getElementById("destinoMapa").value.toLowerCase();
-            const destinoZona = parseInt(document.getElementById("destinoZona").value);
+      obtenerMapaPorNombre(nombreMapa) {
+        return this.todosLosMapas.find(mapa => mapa.nombreMapa.toLowerCase() === nombreMapa.toLowerCase());
+      }
+    }
 
-            const rutaFinder = new RutaFinder(todosLosMapas);
-            const rutas = rutaFinder.encontrarRutaConPasos(origenMapa, origenZona, destinoMapa, destinoZona);
-            mostrarRutas(rutas, origenMapa, origenZona);
-        }
-
-        // Función para mostrar las rutas encontradas
-        function mostrarRutas(rutas, origenMapa, origenZona) {
-            const output = document.getElementById("output");
-            output.innerHTML = "";
-
-            if (rutas.length === 0) {
-                output.innerHTML = "No se encontró ninguna ruta.";
-                return;
-            }
-
-            let rutaNum = 1;
-            rutas.forEach(ruta => {
-    const rutaDiv = document.createElement("div");
-    rutaDiv.classList.add("ruta");
-    rutaDiv.innerHTML = `<strong>Ruta ${rutaNum} encontrada:</br>Origen ${origenMapa} zona ${origenZona}</strong>`;
-    ruta.forEach(paso => {
-        const pasoDiv = document.createElement("div");
-        pasoDiv.innerHTML = `<span class="portal">Portal: ${paso.numeroPortal}</span>, Mapa: ${paso.nombreMapa}, Zona: ${paso.numeroZona}`;
-        pasoDiv.classList.add("paso"); // Añadir clase para estilos
-        rutaDiv.appendChild(pasoDiv);
-
-        // Añadir evento de clic a cada portal
-        const portalSpan = pasoDiv.querySelector(".portal");
-        portalSpan.addEventListener('click', () => {
-            portalSpan.classList.toggle('seleccionado');
-        });
+    // Función para inicializar el autocomplete
+    $(function () {
+      $("#origenMapa, #destinoMapa").autocomplete({
+        source: mapas
+      });
     });
-    output.appendChild(rutaDiv);
-    rutaNum++;
-});
 
+    // Función para buscar la ruta
+    function buscarRuta() {
+      console.error(todosLosMapas)
+      const origenMapa = document.getElementById("origenMapa").value.toLowerCase();
+      const origenZona = parseInt(document.getElementById("origenZona").value);
+      const destinoMapa = document.getElementById("destinoMapa").value.toLowerCase();
+      const destinoZona = parseInt(document.getElementById("destinoZona").value);
 
-        }
+      const rutaFinder = new RutaFinder(todosLosMapas);
+      const rutas = rutaFinder.encontrarRutaConPasos(origenMapa, origenZona, destinoMapa, destinoZona);
+      mostrarRutas(rutas, origenMapa, origenZona);
+    }
 
-        // Ejemplo de cómo agregar un mapa a la lista todosLosMapas (deberás hacerlo con todos los mapas que tienes)
-        // todosLosMapas.push({ /* Aquí agregas la estructura de tu mapa */ });
+    // Función para mostrar las rutas encontradas
+    function mostrarRutas(rutas, origenMapa, origenZona) {
+      const output = document.getElementById("output");
+      output.innerHTML = "";
 
+      if (rutas.length === 0) {
+        output.innerHTML = "No se encontró ninguna ruta.";
+        return;
+      }
 
+      let rutaNum = 1;
+      rutas.forEach(ruta => {
+        const rutaDiv = document.createElement("div");
+        rutaDiv.classList.add("ruta");
+        rutaDiv.innerHTML =
+          `<strong>Ruta ${rutaNum} encontrada:</br>Origen ${origenMapa} zona ${origenZona}</strong>`;
+        ruta.forEach(paso => {
+          const pasoDiv = document.createElement("div");
+          pasoDiv.innerHTML =
+            `<span class="portal">Portal: ${paso.numeroPortal}</span>, Mapa: ${paso.nombreMapa}, Zona: ${paso.numeroZona}`;
+          pasoDiv.classList.add("paso"); // Añadir clase para estilos
+          rutaDiv.appendChild(pasoDiv);
 
-  todosLosMapas.push({
-    nombreMapa:"alcyone",
-      listZona:[
-        {
-          nombreZona:"zona 0",
-          numeroZona:0,
-          listPortales:[
-            {
-            namePortal:"bootes",
-            numeroPortal:1,
-            descPortal:"izq arriba",
-            irZona:3,
-            aparecerPortal:2
-            },
-            {
-            namePortal:"orion",
-            numeroPortal:2,
-            descPortal:"der arriba",
-            irZona:2,
-            aparecerPortal:4
-            },
-            {
-            namePortal:"maia",
-            numeroPortal:3,
-            descPortal:"izq abajo",
-            irZona:1,
-            aparecerPortal:1
-            },
-            {
-            namePortal:"auriga",
-            numeroPortal:4,
-            descPortal:"der abajo",
-            irZona:2,
-            aparecerPortal:4
-            }
-          ]},
-
-
-          {
-          nombreZona:"zona 1",
-          numeroZona:1,
-          listPortales:[
-            {
-            namePortal:"sirius ",
-            numeroPortal:1,
-            descPortal:"izq arriba",
-            irZona:0,
-            aparecerPortal:3
-            },
-            {
-            namePortal:"alcyone",
-            numeroPortal:2,
-            descPortal:"der arriba",
-            irZona:2,
-            aparecerPortal:2
-            },
-            {
-            namePortal:"cygni",
-            numeroPortal:3,
-            descPortal:"izq abajo",
-            irZona:1,
-            aparecerPortal:2
-            },
-            {
-            namePortal:"sirius",
-            numeroPortal:4,
-            descPortal:"der abajo",
-            irZona:1,
-            aparecerPortal:3
-            }
-          ]},
-
-
-          {
-          nombreZona:"zona 2",
-          numeroZona:2,
-          listPortales:[
-            {
-            namePortal:"volantis",
-            numeroPortal:1,
-            descPortal:"izq arriba",
-            irZona:2,
-            aparecerPortal:2
-            },
-            {
-            namePortal:"alcyone",
-            numeroPortal:2,
-            descPortal:"der arriba",
-            irZona:1,
-            aparecerPortal:2
-            },
-            {
-            namePortal:"aquila",
-            numeroPortal:3,
-            descPortal:"izq abajo",
-            irZona:1,
-            aparecerPortal:3
-            },
-            {
-            namePortal:"auriga",
-            numeroPortal:4,
-            descPortal:"der abajo",
-            irZona:3,
-            aparecerPortal:1
-            }
-          ]},
-
-
-
-          {
-          nombreZona:"zona 3",
-          numeroZona:3,
-          listPortales:[
-            {
-            namePortal:"helvetios",
-            numeroPortal:1,
-            descPortal:"izq arriba",
-            irZona:3,
-            aparecerPortal:4
-            },
-            {
-            namePortal:"cygni",
-            numeroPortal:2,
-            descPortal:"der arriba",
-            irZona:0,
-            aparecerPortal:2
-            },
-            {
-            namePortal:"sadatoni",
-            numeroPortal:3,
-            descPortal:"izq abajo",
-            irZona:0,
-            aparecerPortal:3
-            },
-            {
-            namePortal:"auriga",
-            numeroPortal:4,
-            descPortal:"der abajo",
-            irZona:3,
-            aparecerPortal:4
-            }
-          ]}
-
-
-
-
-        ]
+          // Añadir evento de clic a cada portal
+          const portalSpan = pasoDiv.querySelector(".portal");
+          portalSpan.addEventListener('click', () => {
+            portalSpan.classList.toggle('seleccionado');
+          });
         });
-todosLosMapas.push({
-  nombreMapa:"atlas a",
-    listZona:[{
-        nombreZona:"zona 0",
-        numeroZona:0,
-        listPortales:[{
-          namePortal:"eridani",
-          numeroPortal:1,
-          descPortal:"izq arriba 0",
-          irZona:0,
-          aparecerPortal:3
-          },
-          {
-          namePortal:"sirius",
-          numeroPortal:2,
-          descPortal:"der arriba 1",
-          irZona:3,
-          aparecerPortal:4
-          },
-          {
-          namePortal:"bootes",
-          numeroPortal:3,
-          descPortal:"izq abajo 2",
-          irZona:1,
-          aparecerPortal:3
-          },
-          {
-          namePortal:"atlas b",
-          numeroPortal:4,
-          descPortal:"der abajo 3",
-          irZona:0,
-          aparecerPortal:3
-          }]},
-          {
-        nombreZona:"zona 1",
-        numeroZona:1,
-        listPortales:[{
-          namePortal:"helvetios",
-          numeroPortal:1,
-          descPortal:"arriba izq 0",
-          irZona:1,
-          aparecerPortal:2},{
-          namePortal:"helvetios",
-          numeroPortal:2,
-          descPortal:"arriba der 1",
-          irZona:0,
-          aparecerPortal:2},{
-          namePortal:"bootes",
-          numeroPortal:3,
-          descPortal:"abajo izq 2",
-          irZona:3,
-          aparecerPortal:4},{
-          namePortal:"auriga",
-          numeroPortal:4,
-          descPortal:"abajo der 3",
-          irZona:1,
-          aparecerPortal:1}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
-        listPortales:[{
-          namePortal:"eridani",
-          numeroPortal:1,
-          descPortal:"arriba izq 0",
-          irZona:0,
-          aparecerPortal:4},{
-          namePortal:"sirius",
-          numeroPortal:2,
-          descPortal:"arriba der 1",
-          irZona:2,
-          aparecerPortal:4},{
-          namePortal:"cygni",
-          numeroPortal:3,
-          descPortal:"abajo izq 2",
-          irZona:2,
-          aparecerPortal:4},{
-          namePortal:"bootes",
-          numeroPortal:4,
-          descPortal:"abajo der 3",
-          irZona:0,
-          aparecerPortal:2}]},
-          {
-        nombreZona:"zona 3",
-        numeroZona:3,
-        listPortales:[{
-          namePortal:"maia",
-          numeroPortal:1,
-          descPortal:"arriba izq 0",
-          irZona:1,
-          aparecerPortal:3},{
-          namePortal:"aquila",
-          numeroPortal:2,
-          descPortal:"arriba der 1",
-          irZona:1,
-          aparecerPortal:1},{
-          namePortal:"sirius",
-          numeroPortal:3,
-          descPortal:"abajo izq 2",
-          irZona:2,
-          aparecerPortal:1},{
-          namePortal:"aquila",
-          numeroPortal:4,
-          descPortal:"abajo der 3",
-          irZona:2,
-          aparecerPortal:2}]}]});
-todosLosMapas.push({
-  nombreMapa:"atlas b",
-    listZona:[{
-        nombreZona:"zona 0",
-        numeroZona:0,
-        listPortales:[{
-          namePortal:"maia",
-          numeroPortal:1,
-          descPortal:"izq arriba 0",
-          irZona:0,
-          aparecerPortal:2},
-          {
-          namePortal:"maia",
-          numeroPortal:2,
-          descPortal:"der arriba 1",
-          irZona:0,
-          aparecerPortal:3},{
-          namePortal:"atlas a",
-          numeroPortal:3,
-          descPortal:"izq abajo 2",
-          irZona:0,
-          aparecerPortal:4},{
-          namePortal:"sirius",
-          numeroPortal:4,
-          descPortal:"der abajo 3",
-          irZona:0,
-          aparecerPortal:3}]},{
-        nombreZona:"zona 1",
-        numeroZona:1,
-        listPortales:[{
-          namePortal:"persei",
-          numeroPortal:1,
-          descPortal:"arriba izq 0",
-          irZona:3,
-          aparecerPortal:4},{
-          namePortal:"orion",
-          numeroPortal:2,
-          descPortal:"arriba der 1",
-          irZona:0,
-          aparecerPortal:2},{
-          namePortal:"orion",
-          numeroPortal:3,
-          descPortal:"abajo izq 2",
-          irZona:2,
-          aparecerPortal:1},{
-          namePortal:"aquila",
-          numeroPortal:4,
-          descPortal:"abajo der 3",
-          irZona:1,
-          aparecerPortal:4}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
-        listPortales:[{
-          namePortal:"helvetios",
-          numeroPortal:1,
-          descPortal:"arriba izq 0",
-          irZona:0,
-          aparecerPortal:4},{
-          namePortal:"orion",
-          numeroPortal:2,
-          descPortal:"arriba der 1",
-          irZona:0,
-          aparecerPortal:1},{
-          namePortal:"cygni",
-          numeroPortal:3,
-          descPortal:"abajo izq 2",
-          irZona:2,
-          aparecerPortal:2},{
-          namePortal:"atlas c",
-          numeroPortal:4,
-          descPortal:"abajo der 3",
-          irZona:0,
-          aparecerPortal:3}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
-        listPortales:[{
-          namePortal:"helvetios",
-          numeroPortal:1,
-          descPortal:"arriba izq 0",
-          irZona:3,
-          aparecerPortal:2},{
-          namePortal:"maia",
-          numeroPortal:2,
-          descPortal:"arriba der 1",
-          irZona:2,
-          aparecerPortal:1},{
-          namePortal:"sadatoni",
-          numeroPortal:3,
-          descPortal:"abajo izq 2",
-          irZona:2,
-          aparecerPortal:3},{
-          namePortal:"eridani",
-          numeroPortal:4,
-          descPortal:"abajo der 3",
-          irZona:3,
-          aparecerPortal:4}]}]});
-todosLosMapas.push({
-  nombreMapa:"atlas c",
-    listZona:[{
-        nombreZona:"zona 0",
-        numeroZona:0,
-        listPortales:[{
-          namePortal:"orion",
-          numeroPortal:1,
-          descPortal:"arriba izq 0",
-          irZona:3,
-          aparecerPortal:3},{
-          namePortal:"orion",
-          numeroPortal:2,
-          descPortal:"arriba der 1",
-          irZona:3,
-          aparecerPortal:4},{
-          namePortal:"atlas b",
-          numeroPortal:3,
-          descPortal:"abajo izq 2",
-          irZona:2,
-          aparecerPortal:4},{
-          namePortal:"persei",
-          numeroPortal:4,
-          descPortal:"abajo der 3",
-          irZona:3,
-          aparecerPortal:1}]},{
-        nombreZona:"zona 1",
-        numeroZona:1,
-        listPortales:[{
-          namePortal:"eridani",
-          numeroPortal:1,
-          descPortal:"arriba izq 0",
-          irZona:1,
-          aparecerPortal:3},{
-          namePortal:"sadatoni",
-          numeroPortal:2,
-          descPortal:"arriba der 1",
-          irZona:1,
-          aparecerPortal:1},{
-          namePortal:"maia",
-          numeroPortal:3,
-          descPortal:"abajo izq 2",
-          irZona:1,
-          aparecerPortal:4},{
-          namePortal:"orion",
-          numeroPortal:4,
-          descPortal:"abajo der 3",
-          irZona:0,
-          aparecerPortal:3}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
-        listPortales:[{
-          namePortal:"sadatoni",
-          numeroPortal:1,
-          descPortal:"arriba izq 0",
-          irZona:3,
-          aparecerPortal:3},{
-          namePortal:"volantis",
-          numeroPortal:2,
-          descPortal:"arriba der 1",
-          irZona:0,
-          aparecerPortal:3},{
-          namePortal:"persei",
-          numeroPortal:3,
-          descPortal:"abajo izq 2",
-          irZona:2,
-          aparecerPortal:2},{
-          namePortal:"aquila",
-          numeroPortal:4,
-          descPortal:"abajo der 3",
-          irZona:2,
-          aparecerPortal:3}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
-        listPortales:[{
-          namePortal:"bootes",
-          numeroPortal:1,
-          descPortal:"arriba izq 0",
-          irZona:0,
-          aparecerPortal:4},{
-          namePortal:"sadatoni",
-          numeroPortal:2,
-          descPortal:"arriba der 1",
-          irZona:0,
-          aparecerPortal:2},{
-          namePortal:"auriga",
-          numeroPortal:3,
-          descPortal:"abajo izq 2",
-          irZona:3,
-          aparecerPortal:2},{
-          namePortal:"orion",
-          numeroPortal:4,
-          descPortal:"abajo der 3",
-          irZona:1,
-          aparecerPortal:4}]}]});
-todosLosMapas.push({
-  nombreMapa:"aquila",
-    listZona:[{
-        nombreZona:"zona 0",
-        numeroZona:0,
-        listPortales:[{
-          namePortal:"aquila",
-          numeroPortal:1,
-          descPortal:"arriba izq 0",
-          irZona:3,
-          aparecerPortal:2},{
-          namePortal:"maia",
-          numeroPortal:2,
-          descPortal:"arriba der 1",
-          irZona:3,
-          aparecerPortal:3},{
-          namePortal:"bootes",
-          numeroPortal:3,
-          descPortal:"abajo izq 2",
-          irZona:2,
-          aparecerPortal:3},{
-          namePortal:"sirius",
-          numeroPortal:4,
-          descPortal:"abajo der 3",
-          irZona:1,
-          aparecerPortal:2}]},{
-        nombreZona:"zona 1",
-        numeroZona:1,
-        listPortales:[{
-          namePortal:"atlas a",
-          numeroPortal:1,
-          descPortal:"arriba izq 0",
-          irZona:3,
-          aparecerPortal:2},{
-          namePortal:"sadatoni",
-          numeroPortal:2,
-          descPortal:"arriba der 1",
-          irZona:2,
-          aparecerPortal:4},{
-          namePortal:"alcyone",
-          numeroPortal:3,
-          descPortal:"abajo izq 2",
-          irZona:2,
-          aparecerPortal:3},{
-          namePortal:"atlas b",
-          numeroPortal:4,
-          descPortal:"abajo der 3",
-          irZona:1,
-          aparecerPortal:4}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
-        listPortales:[{
-          namePortal:"cygni",
-          numeroPortal:1,
-          descPortal:"arriba izq 0",
-          irZona:2,
-          aparecerPortal:3},{
-          namePortal:"atlas a",
-          numeroPortal:2,
-          descPortal:"arriba der 1",
-          irZona:3,
-          aparecerPortal:4},{
-          namePortal:"atlas c",
-          numeroPortal:3,
-          descPortal:"abajo izq 2",
-          irZona:2,
-          aparecerPortal:4},{
-          namePortal:"volantis",
-          numeroPortal:4,
-          descPortal:"abajo der 3",
-          irZona:3,
-          aparecerPortal:3}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
-        listPortales:[{
-          namePortal:"bootes",
-          numeroPortal:1,
-          descPortal:"arriba izq 0",
-          irZona:2,
-          aparecerPortal:4},{
-          namePortal:"aquila",
-          numeroPortal:2,
-          descPortal:"arriba der 1",
-          irZona:0,
-          aparecerPortal:1},{
-          namePortal:"eridani",
-          numeroPortal:3,
-          descPortal:"abajo izq 2",
-          irZona:2,
-          aparecerPortal:1},{
-          namePortal:"bootes",
-          numeroPortal:4,
-          descPortal:"abajo der 3",
-          irZona:2,
-          aparecerPortal:1}]}]});
-todosLosMapas.push({
-  nombreMapa:"auriga",
-    listZona:[{
-        nombreZona:"zona 0",
-        numeroZona:0,
-        listPortales:[{
-          namePortal:"volantis",
-          numeroPortal:1,
-          descPortal:"izq arriba 0",
-          irZona:1,
-          aparecerPortal:3},{
-          namePortal:"volantis",
-          numeroPortal:2,
-          descPortal:"der arriba 1",
-          irZona:2,
-          aparecerPortal:4},{
-          namePortal:"persei",
-          numeroPortal:3,
-          descPortal:"izq abajo 2",
-          irZona:1,
-          aparecerPortal:2},{
-          namePortal:"auriga",
-          numeroPortal:4,
-          descPortal:"der abajo 3",
-          irZona:2,
-          aparecerPortal:1}]},
-          {
-        nombreZona:"zona 1",
-        numeroZona:1,
-        listPortales:
-        [{
-          namePortal:"atlas a",
-          numeroPortal:1,
-          descPortal:"izq arriba 0",
-          irZona:1,
-          aparecerPortal:4
-          },
-          {
-          namePortal:"sirius",
-          numeroPortal:2,
-          descPortal:"der arriba 1",
-          irZona:3,
-          aparecerPortal:1
-          },
-          {
-          namePortal:"sadatoni",
-          numeroPortal:3,
-          descPortal:"izq abajo 2",
-          irZona:1,
-          aparecerPortal:4
-          },
-          {
-          namePortal:"eridani",
-          numeroPortal:4,
-          descPortal:"der abajo 3",
-          irZona:2,
-          aparecerPortal:2}]
-        },
-        {
-        nombreZona:"zona 2",
-        numeroZona:2,
-        listPortales:[{
-          namePortal:"auriga",
-          numeroPortal:1,
-          descPortal:"arriba izq 0",
-          irZona:0,
-          aparecerPortal:4},{
-          namePortal:"persei",
-          numeroPortal:2,
-          descPortal:"arriba der 1",
-          irZona:0,
-          aparecerPortal:3},{
-          namePortal:"eridani",
-          numeroPortal:3,
-          descPortal:"abajo izq 2",
-          irZona:3,
-          aparecerPortal:3},{
-          namePortal:"alcyone",
-          numeroPortal:4,
-          descPortal:"abajo der 3",
-          irZona:0,
-          aparecerPortal:4}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
-        listPortales:[{
-          namePortal:"alcyone",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:2,
-          aparecerPortal:4},{
-          namePortal:"atlas c",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:3,
-          aparecerPortal:3},{
-          namePortal:"eridani",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:0,
-          aparecerPortal:1},{
-          namePortal:"alcyone",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:3,
-          aparecerPortal:4}]}]});
-todosLosMapas.push({
-  nombreMapa:"bootes",
-    listZona:[{
-        nombreZona:"zona 0",
-        numeroZona:0,
-        listPortales:[{
-          namePortal:"bootes",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:1,
-          aparecerPortal:2},{
-          namePortal:"atlas a",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:2,
-          aparecerPortal:4},{
-          namePortal:"sirius",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:2,
-          aparecerPortal:2},{
-          namePortal:"atlas c",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:3,
-          aparecerPortal:1}]},{
-        nombreZona:"zona 1",
-        numeroZona:1,
-        listPortales:[{
-          namePortal:"cygni",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:0,
-          aparecerPortal:4},{
-          namePortal:"bootes",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:0,
-          aparecerPortal:1},{
-          namePortal:"atlas a",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:0,
-          aparecerPortal:3},{
-          namePortal:"maia",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:3,
-          aparecerPortal:4}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
-        listPortales:[{
-          namePortal:"aquila",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:3,
-          aparecerPortal:4},{
-          namePortal:"orion",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:3,
-          aparecerPortal:1},{
-          namePortal:"aquila",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:0,
-          aparecerPortal:3},{
-          namePortal:"aquila",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:3,
-          aparecerPortal:1}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
-        listPortales:[{
-          namePortal:"volantis",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:0,
-          aparecerPortal:4},{
-          namePortal:"alcyone",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:0,
-          aparecerPortal:1},{
-          namePortal:"persei",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:1,
-          aparecerPortal:4},{
-          namePortal:"atlas a",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:1,
-          aparecerPortal:3}]}]});
-todosLosMapas.push({
-  nombreMapa:"cygni",
-    listZona:[{
-        nombreZona:"zona 0",
-        numeroZona:0,
-        listPortales:[{
-          namePortal:"orion",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:3,
-          aparecerPortal:2},{
-          namePortal:"alcyone",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:3,
-          aparecerPortal:2},{
-          namePortal:"sirius",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:3,
-          aparecerPortal:3},{
-          namePortal:"bootes",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:1,
-          aparecerPortal:1}]},{
-        nombreZona:"zona 1",
-        numeroZona:1,
-        listPortales:[{
-          namePortal:"sadatoni",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:2,
-          aparecerPortal:2},{
-          namePortal:"alcyone",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:1,
-          aparecerPortal:3},{
-          namePortal:"orion",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:1,
-          aparecerPortal:3},{
-          namePortal:"volantis",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:2,
-          aparecerPortal:3}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
-        listPortales:[{
-          namePortal:"maia",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:0,
-          aparecerPortal:1},{
-          namePortal:"atlas b",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:2,
-          aparecerPortal:3},{
-          namePortal:"aquila",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:2,
-          aparecerPortal:1},{
-          namePortal:"atlas a",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:2,
-          aparecerPortal:3}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
-        listPortales:[{
-          namePortal:"eridani",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:3,
-          aparecerPortal:2},{
-          namePortal:"eridani",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:2,
-          aparecerPortal:3},{
-          namePortal:"persei",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:3,
-          aparecerPortal:2},{
-          namePortal:"persei",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:1,
-          aparecerPortal:1}]}]});
-todosLosMapas.push({
-  nombreMapa:"eridani",
-    listZona:[{
-        nombreZona:"zona 0",
-        numeroZona:0,
-        listPortales:[{
-          namePortal:"auriga",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:3,
-          aparecerPortal:3},{
-          namePortal:"sirius",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:1,
-          aparecerPortal:4},{
-          namePortal:"atlas a",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:0,
-          aparecerPortal:1},{
-          namePortal:"atlas a",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:2,
-          aparecerPortal:1}]},{
-        nombreZona:"zona 1",
-        numeroZona:1,
-        listPortales:[{
-          namePortal:"sadatoni",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:1,
-          aparecerPortal:2},{
-          namePortal:"persei",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:0,
-          aparecerPortal:2},{
-          namePortal:"atlas c",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:1,
-          aparecerPortal:1},{
-          namePortal:"helvetios",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:3,
-          aparecerPortal:3}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
-        listPortales:[{
-          namePortal:"aquila",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:3,
-          aparecerPortal:3},{
-          namePortal:"auriga",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:1,
-          aparecerPortal:4},{
-          namePortal:"cygni",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:3,
-          aparecerPortal:2},{
-          namePortal:"persei",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:3,
-          aparecerPortal:3}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
-        listPortales:[{
-          namePortal:"helvetios",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:1,
-          aparecerPortal:3},{
-          namePortal:"cygni",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:3,
-          aparecerPortal:1},{
-          namePortal:"auriga",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:2,
-          aparecerPortal:3},{
-          namePortal:"atlas b",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:3,
-          aparecerPortal:4}]}]});
-todosLosMapas.push({
-  nombreMapa:"helvetios",
-    listZona:[{
-        nombreZona:"zona 0",
-        numeroZona:0,
-        listPortales:[{
-          namePortal:"maia",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:1,
-          aparecerPortal:2},{
-          namePortal:"atlas a",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:1,
-          aparecerPortal:2},{
-          namePortal:"persei",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:2,
-          aparecerPortal:4},{
-          namePortal:"atlas b",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:2,
-          aparecerPortal:1}]},{
-        nombreZona:"zona 1",
-        numeroZona:1,
-        listPortales:[{
-          namePortal:"helvetios",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:2,
-          aparecerPortal:3},{
-          namePortal:"atlas a",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:1,
-          aparecerPortal:1},{
-          namePortal:"eridani",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:3,
-          aparecerPortal:1},{
-          namePortal:"sadatoni",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:1,
-          aparecerPortal:3}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
-        listPortales:[{
-          namePortal:"maia",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:2,
-          aparecerPortal:4},{
-          namePortal:"persei",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:0,
-          aparecerPortal:4},{
-          namePortal:"helvetios",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:1,
-          aparecerPortal:1},{
-          namePortal:"persei",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:1,
-          aparecerPortal:3}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
-        listPortales:[{
-          namePortal:"sirius",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:1,
-          aparecerPortal:1},{
-          namePortal:"atlas b",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:3,
-          aparecerPortal:1},{
-          namePortal:"eridani",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:1,
-          aparecerPortal:4},{
-          namePortal:"alcyone",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:3,
-          aparecerPortal:1}]}]});
-todosLosMapas.push({
-  nombreMapa:"maia",
-    listZona:[{
-        nombreZona:"zona 0",
-        numeroZona:0,
-        listPortales:[{
-          namePortal:"cygni",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:2,
-          aparecerPortal:1},{
-          namePortal:"atlas b",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:0,
-          aparecerPortal:1},{
-          namePortal:"atlas b",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:0,
-          aparecerPortal:2},{
-          namePortal:"volantis",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:0,
-          aparecerPortal:1}]},{
-        nombreZona:"zona 1",
-        numeroZona:1,
-        listPortales:[{
-          namePortal:"alcyone",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:0,
-          aparecerPortal:3},{
-          namePortal:"helvetios",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:0,
-          aparecerPortal:1},{
-          namePortal:"atlas a",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:3,
-          aparecerPortal:1},{
-          namePortal:"atlas c",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:1,
-          aparecerPortal:3}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
-        listPortales:[{
-          namePortal:"atlas b",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:3,
-          aparecerPortal:2},{
-          namePortal:"maia",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:3,
-          aparecerPortal:2},{
-          namePortal:"sirius",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:0,
-          aparecerPortal:2},{
-          namePortal:"helvetios",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:2,
-          aparecerPortal:1}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
-        listPortales:[{
-          namePortal:"orion",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:2,
-          aparecerPortal:3},{
-          namePortal:"maia",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:2,
-          aparecerPortal:2},{
-          namePortal:"aquila",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:0,
-          aparecerPortal:2},{
-          namePortal:"bootes",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:1,
-          aparecerPortal:4}]}]});
-todosLosMapas.push({
-  nombreMapa:"orion",
-    listZona:[{
-        nombreZona:"zona 0",
-        numeroZona:0,
-        listPortales:[{
-          namePortal:"atlas b",
-          numeroPortal:1,
-          descPortal:"izq arriba 1",
-          irZona:2,
-          aparecerPortal:2},{
-          namePortal:"atlas b",
-          numeroPortal:2,
-          descPortal:"der arriba 2",
-          irZona:1,
-          aparecerPortal:2},{
-          namePortal:"atlas c",
-          numeroPortal:3,
-          descPortal:"izq abajo 3",
-          irZona:1,
-          aparecerPortal:4},{
-          namePortal:"volantis",
-          numeroPortal:4,
-          descPortal:"der abajo 4",
-          irZona:1,
-          aparecerPortal:4}]},{
-        nombreZona:"zona 1",
-        numeroZona:1,
-        listPortales:[{
-          namePortal:"sadatoni",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:0,
-          aparecerPortal:4},{
-          namePortal:"volantis",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:1,
-          aparecerPortal:2},{
-          namePortal:"cygni",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:1,
-          aparecerPortal:3},{
-          namePortal:"atlas c",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:3,
-          aparecerPortal:4}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
-        listPortales:[{
-          namePortal:"atlas b",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:1,
-          aparecerPortal:3},{
-          namePortal:"persei",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:0,
-          aparecerPortal:1},{
-          namePortal:"maia",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:3,
-          aparecerPortal:1},{
-          namePortal:"alcyone",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:0,
-          aparecerPortal:2}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
-        listPortales:[{
-          namePortal:"bootes",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:2,
-          aparecerPortal:2},{
-          namePortal:"cygni",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:0,
-          aparecerPortal:1},{
-          namePortal:"atlas c",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:0,
-          aparecerPortal:1},{
-          namePortal:"atlas c",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:0,
-          aparecerPortal:2}]}]});
-todosLosMapas.push({
-  nombreMapa:"persei",
-    listZona:[{
-        nombreZona:"zona 0",
-        numeroZona:0,
-        listPortales:[{
-          namePortal:"orion",
-          numeroPortal:1,
-          descPortal:"izq arriba 1",
-          irZona:2,
-          aparecerPortal:2},{
-          namePortal:"eridani",
-          numeroPortal:2,
-          descPortal:"der arriba 2",
-          irZona:1,
-          aparecerPortal:2},{
-          namePortal:"auriga",
-          numeroPortal:3,
-          descPortal:"izq abajo 3",
-          irZona:2,
-          aparecerPortal:2},{
-          namePortal:"helvetios",
-          numeroPortal:4,
-          descPortal:"der abajo 4",
-          irZona:2,
-          aparecerPortal:2}]},{
-        nombreZona:"zona 1",
-        numeroZona:1,
-        listPortales:[{
-          namePortal:"cygni",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:3,
-          aparecerPortal:4},{
-          namePortal:"auriga",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:0,
-          aparecerPortal:3},{
-          namePortal:"helvetios",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:2,
-          aparecerPortal:4},{
-          namePortal:"bootes",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:3,
-          aparecerPortal:3}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
-        listPortales:[{
-          namePortal:"volantis",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:1,
-          aparecerPortal:1},{
-          namePortal:"atlas c",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:2,
-          aparecerPortal:3},{
-          namePortal:"sadatoni",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:3,
-          aparecerPortal:4},{
-          namePortal:"helvetios",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:0,
-          aparecerPortal:3}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
-        listPortales:[{
-          namePortal:"atlas c",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:0,
-          aparecerPortal:4},{
-          namePortal:"cygni",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:3,
-          aparecerPortal:3},{
-          namePortal:"eridani",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:2,
-          aparecerPortal:4},{
-          namePortal:"atlas b",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:1,
-          aparecerPortal:1}]}]});
-todosLosMapas.push({
-  nombreMapa:"sadatoni",
-    listZona:[{
-        nombreZona:"zona 0",
-        numeroZona:0,
-        listPortales:[{
-          namePortal:"sirius",
-          numeroPortal:1,
-          descPortal:"izq arriba 1",
-          irZona:2,
-          aparecerPortal:3},{
-          namePortal:"atlas c",
-          numeroPortal:2,
-          descPortal:"der arriba 2",
-          irZona:3,
-          aparecerPortal:2},{
-          namePortal:"alcyone",
-          numeroPortal:3,
-          descPortal:"izq abajo 3",
-          irZona:3,
-          aparecerPortal:3},{
-          namePortal:"orion",
-          numeroPortal:4,
-          descPortal:"der abajo 4",
-          irZona:1,
-          aparecerPortal:1}]},{
-        nombreZona:"zona 1",
-        numeroZona:1,
-        listPortales:[{
-          namePortal:"atlas c",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:1,
-          aparecerPortal:2},{
-          namePortal:"eridani",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:1,
-          aparecerPortal:1},{
-          namePortal:"helvetios",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:1,
-          aparecerPortal:4},{
-          namePortal:"auriga",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:1,
-          aparecerPortal:3}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
-        listPortales:[{
-          namePortal:"sirius",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:0,
-          aparecerPortal:1},{
-          namePortal:"cygni",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:1,
-          aparecerPortal:1},{
-          namePortal:"atlas b",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:3,
-          aparecerPortal:3},{
-          namePortal:"aquila",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:1,
-          aparecerPortal:2}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
-        listPortales:[{
-          namePortal:"volantis",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:3,
-          aparecerPortal:4},{
-          namePortal:"sirius",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:3,
-          aparecerPortal:2},{
-          namePortal:"atlas c",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:2,
-          aparecerPortal:1},{
-          namePortal:"persei",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:2,
-          aparecerPortal:3}]}]});
-todosLosMapas.push({
-  nombreMapa:"sirius",
-    listZona:[{
-        nombreZona:"zona 0",
-        numeroZona:0,
-        listPortales:[{
-          namePortal:"sadatoni",
-          numeroPortal:1,
-          descPortal:"izq arriba 1",
-          irZona:2,
-          aparecerPortal:1},{
-          namePortal:"maia",
-          numeroPortal:2,
-          descPortal:"der arriba 2",
-          irZona:2,
-          aparecerPortal:3},{
-          namePortal:"alcyone",
-          numeroPortal:3,
-          descPortal:"izq abajo 3",
-          irZona:1,
-          aparecerPortal:1},{
-          namePortal:"atlas b",
-          numeroPortal:4,
-          descPortal:"der abajo 4",
-          irZona:0,
-          aparecerPortal:4}]},{
-        nombreZona:"zona 1",
-        numeroZona:1,
-        listPortales:[{
-          namePortal:"helvetios",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:3,
-          aparecerPortal:1},{
-          namePortal:"aquila",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:0,
-          aparecerPortal:4},{
-          namePortal:"alcyone",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:1,
-          aparecerPortal:4},{
-          namePortal:"eridani",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:0,
-          aparecerPortal:2}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
-        listPortales:[{
-          namePortal:"atlas a",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:3,
-          aparecerPortal:3},{
-          namePortal:"bootes",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:0,
-          aparecerPortal:3},{
-          namePortal:"sadatoni",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:0,
-          aparecerPortal:1},{
-          namePortal:"atlas a",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:2,
-          aparecerPortal:2}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
-        listPortales:[{
-          namePortal:"auriga",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:1,
-          aparecerPortal:2},{
-          namePortal:"sadatoni",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:3,
-          aparecerPortal:2},{
-          namePortal:"cygni",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:0,
-          aparecerPortal:3},{
-          namePortal:"atlas a",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:0,
-          aparecerPortal:2}]}]});
-todosLosMapas.push({
-  nombreMapa:"volantis",
-    listZona:[{
-        nombreZona:"zona 0",
-        numeroZona:0,
-        listPortales:[{
-          namePortal:"maia",
-          numeroPortal:1,
-          descPortal:"izq arriba 1",
-          irZona:0,
-          aparecerPortal:4},{
-          namePortal:"volantis",
-          numeroPortal:2,
-          descPortal:"der arriba 2",
-          irZona:3,
-          aparecerPortal:2},{
-          namePortal:"atlas c",
-          numeroPortal:3,
-          descPortal:"izq abajo 3",
-          irZona:2,
-          aparecerPortal:2},{
-          namePortal:"bootes",
-          numeroPortal:4,
-          descPortal:"der abajo 4",
-          irZona:3,
-          aparecerPortal:1}]},{
-        nombreZona:"zona 1",
-        numeroZona:1,
-        listPortales:[{
-          namePortal:"persei",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:2,
-          aparecerPortal:1},{
-          namePortal:"orion",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:1,
-          aparecerPortal:2},{
-          namePortal:"auriga",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:0,
-          aparecerPortal:1},{
-          namePortal:"orion",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:0,
-          aparecerPortal:4}]},{
-        nombreZona:"zona 2",
-        numeroZona:2,
-        listPortales:[{
-          namePortal:"volantis",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:3,
-          aparecerPortal:1},{
-          namePortal:"alcyone",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:2,
-          aparecerPortal:1},{
-          namePortal:"cygni",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:1,
-          aparecerPortal:4},{
-          namePortal:"auriga",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:0,
-          aparecerPortal:2}]},{
-        nombreZona:"zona 3",
-        numeroZona:3,
-        listPortales:[{
-          namePortal:"volantis",
-          numeroPortal:1,
-          descPortal:"arriba izq 1",
-          irZona:2,
-          aparecerPortal:1},{
-          namePortal:"volantis",
-          numeroPortal:2,
-          descPortal:"arriba der 2",
-          irZona:0,
-          aparecerPortal:2},{
-          namePortal:"aquila",
-          numeroPortal:3,
-          descPortal:"abajo izq 3",
-          irZona:2,
-          aparecerPortal:4},{
-          namePortal:"sadatoni",
-          numeroPortal:4,
-          descPortal:"abajo der 4",
-          irZona:3,
-          aparecerPortal:1}]}]});
+        output.appendChild(rutaDiv);
+        rutaNum++;
+      });
 
 
-
-
-
-
-    </script>
+    }
+  </script>
 </body>
+
 </html>
